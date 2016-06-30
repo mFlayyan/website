@@ -24,41 +24,43 @@ import json
 
 class ResCompany(models.Model):
 
-    _inherit = "res.partner"
+    _inherit = "res.company"
+
+    gps_longitude = fields.Char('longitude gps',)
+    gps_latitude = fields.Char('latitude gps',)
 
     def openstreetmap_img(self,  zoom=16, width=250, height=250):
         url = 'http://staticmap.openstreetmap.de/staticmap.php'
         params = {
             'center': "{lat},{lon}".format(
-                lat=self.partner_latitude or '',
-                lon=self.partner_longitude or ''),
+                lat=self.gps_latitude or '',
+                lon=self.gps_longitude or ''),
             'size': "%sx%s" % (height, width),
             'zoom': zoom,
             'maptype': 'mapnik',
             'map': "{zm}/{lat}/{lon}".format(
                 zm=zoom,
-                lat=self.partner_latitude or '',
-                lon=self.partners_longitude or ''),
+                lat=self.gps_latitude or '',
+                lon=self.gps_longitude or ''),
         }
         return url + '?%s' % urllib.urlencode(params)
 
     def openstreetmap_link(self, zoom=16):
         url = 'http://www.openstreetmap.org'
         params = {
-            'mlat': self.partner_latitude,
-            'mlon': self.partner_longitude,
+            'mlat': self.gps_latitude,
+            'mlon': self.gps_longitude,
             'zoom': zoom,
             'layers': 'M',
             'map': "{zm}/{lat}/{lon}".format(
                 zm=zoom,
-                lat=self.partner_latitude or '',
-                lon=self.partner_longitude or '', )
+                lat=self.gps_latitude or '',
+                lon=self.gps_longitude or '', )
         }
         return url + '?%s' % urllib.urlencode(params)
-    """
+
     @api.multi
     def get_nominatim_openstreetmap_coordinates(self):
-        self.env['res_partner'].geo_find
         url = 'http://nominatim.openstreetmap.org/search'
         params = {
             'format': 'json',
@@ -87,4 +89,3 @@ class ResCompany(models.Model):
             'gps_latitude': res[0]['lat'],
             })
         return {}
-    """
