@@ -56,6 +56,12 @@ class BlogPost(models.Model):
                     # add content to backend in view
                     self.display_type = "no_teaser"
 
+    #adding thumbnail
+    thumbnail = fields.Many2one(string='Blog Post Thumbnail' , 
+            comodel_name = 'ir.attachment',
+            help= 'A small image shown in teaser and content'
+            )
+
     display_type = fields.Selection(
         selection=lambda self: self.blog_id._get_display_types(),
         string='Display type',
