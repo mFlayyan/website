@@ -37,10 +37,11 @@ class WebsiteBlog(models.Model):
         default='no_teaser')
 
     thumbnail_width = fields.Selection(selection=[
-        (64, 'Small'),  (128, 'Medium'), (256, 'Big'), (384, 'Gigantic') ],
-        tring="Thumbnail Size" ,
-        help = "Allows to choose thumbnail size in blog teaser and also in content"
-                "\n will be used in all blogposts of this blog")
+        ('64px', 'Small'),  ('128px', 'Medium'), 
+        ('256px', 'Big'), ('384px', 'Gigantic')],
+        string="Thumbnail Size",
+        help="Allows to choose thumbnail size in blog teaser and also" 
+             "in content \n will be used in all blogposts of this blog")
 
     @api.one
     def set_all_posts(self):
