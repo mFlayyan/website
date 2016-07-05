@@ -5,7 +5,7 @@
           <xpath expr="//div[@id='blog_content']" position="before">
               <t t-if="blog_post.thumbnail">
                   <div class="pull-left" style = "margin: 5px 12px 5px 5px;"  t-field="blog_post.thumbnail.datas"  t-field-options='{"widget": "image", "class" : "pull-left mt-16 media-object" ,  
-                          "max_width" : 192}'/>
+                          "max_width" : 256}'/>
               </t>
           </xpath>
       <xpath expr="//h2[@t-field='blog_post.subtitle']" position="after">
