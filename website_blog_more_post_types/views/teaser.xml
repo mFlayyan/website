@@ -5,9 +5,7 @@
             <xpath expr="//div[@name='blog_post_data']" position="inside">
                 <t t-if="blog_post.display_type == 'complete'"> 
                     <t t-if="blog_post.thumbnail">
-                           <div class="pull-left">
-                               <t t-field="thumbnail"/>
-                           </div>
+                          <div class="pull-left"  t-field="blog_post.thumbnail.datas"  t-field-options='{"widget": "image", "height": "60px" , "width" : "40px"}'/>
                       </t>
                     <div t-field="blog_post.content"/>
                 </t>
@@ -15,9 +13,7 @@
                     <p/>
                     <div>
                         <t t-if="blog_post.thumbnail">
-                            <div class="pull-left">
-                                <t t-field="thumbnail"/>
-                            </div>
+                          <div class="pull-left"  t-field="blog_post.thumbnail.datas"  t-field-options='{"widget": "image", "height": "60px" , "width" : "40px"}'/>
                         </t>
                         <p t-esc="blog_post.teaser"/>
                     </div>
