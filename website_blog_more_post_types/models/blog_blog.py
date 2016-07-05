@@ -41,7 +41,8 @@ class WebsiteBlog(models.Model):
         ('256px', 'Big'), ('384px', 'Gigantic')],
         string="Thumbnail Size",
         help="Allows to choose thumbnail size in blog teaser and also" 
-             "in content \n will be used in all blogposts of this blog")
+             "in content \n will be used in all blogposts of this blog",
+        default='128px')
 
     @api.one
     def set_all_posts(self):
