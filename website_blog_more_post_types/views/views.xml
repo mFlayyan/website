@@ -17,9 +17,8 @@
                 <field name="inherit_id" ref="website_blog.view_blog_post_form"/>
                 <field name="arch" type="xml">
                     <field name="subtitle" position="after">
-                        <group name="Thumbnail">
-                            <field name="thumbnail"/>
-                        </group>
+                        <field name="thumbnail"/>
+                        <field name="thumbnail_width"/>
                         <field name="display_type"/>
                         <p/>
                         <group name="teaser" attrs="{'invisible': [('display_type', '!=', 'teaser')]}" colspan="4">
