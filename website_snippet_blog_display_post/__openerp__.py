@@ -10,7 +10,7 @@
     'license': 'AGPL-3',
     'category': 'Website',
     'depends': [
-        'website_blog_more_post_types',
+        'website_blog_layout_options',
     ],
     'data': [
         'views/templates.xml',
