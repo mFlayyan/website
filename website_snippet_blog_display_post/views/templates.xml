@@ -9,7 +9,7 @@
 
       <template id="blog_postcontent">
           <t t-set="blogpost" t-value="request.env['blog.post'].get_post(parameter_id,blog_id)"/>
-          <div class="col-md-4" t-if="blogpost">
+          <div class="col-md-8" t-if="blogpost">
               <h4>
                   <t t-esc="blogpost.name or 'Selected Post Has No Title'"/>
               </h4>
@@ -17,7 +17,7 @@
                   <t t-esc="blogpost.teaser or 'Selected Post Has No Teaser'"/>
               </p>
           </div>
-          <div class="col-md-4" t-if="not blogpost">
+          <div class="col-md-8" t-if="not blogpost">
               <p>'No blog post selected , please do so by selecting fro widget configuration options'</p>
           </div>
       </template>
