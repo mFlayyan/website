@@ -7,9 +7,6 @@ website_blog_layout_options
 ===========================
 
 
-MORE DISPLAY TYPES
-------------------
-
 * Adds 2 extra display types of posts to the post list of any blog:
 
 1. Teaser: The title of the post with a small teaser and a "read more" link.
