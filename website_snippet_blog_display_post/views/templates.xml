@@ -7,7 +7,7 @@
            </xpath>
        </template> 
 
-      <template id="blog_postcontent">
+       <template id="blog_postcontent">
           <t t-set="blogpost" t-value="request.env['blog.post'].get_post(parameter_id,blog_id)"/>
           <div class="col-md-8" t-if="blogpost">
               <h4>
@@ -41,7 +41,7 @@
               </div>
           </xpath>
           <!-- there we access directly addons/website/static/src/xml/website.snippets.xml and add a new dropdown -->
-          <!-- Once accessed our dropdown, menus and functions are  excellently documented (for once!) in 
+          <!-- Once accessed our dropdown, menus and functions are documented in 
                 addons/website/static/src/js/website.snippets.editor.js   -->
 
           <xpath expr="//div[@id='snippet_options']" position="inside">
