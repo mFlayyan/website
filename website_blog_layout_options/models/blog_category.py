@@ -4,11 +4,10 @@
 from openerp import api, fields, models
 
 
-class blog_category(models.Model):
+class BlogCategory(models.Model):
     _name = 'blog.category'
     _description = ''
 
     name = fields.Char(String='name', help="Name of this category")
-
     post_ids = fields.Many2many('blog.post', string='Posts')
 
