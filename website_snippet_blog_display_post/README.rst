@@ -16,6 +16,8 @@ Configuration
 =============
 
 This widget requires the website_blog_more_post_types module.
+It also requires website_parametric_snippets a module that provides the 
+t-ignore-branding field to allow parametric behaviour in snippet selections.
 Website_blog_more_post_types extends blog posts by giving them also a "teaser",
 which is what the snippet shows on the page.
 
