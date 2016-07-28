@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-   <data>
+    <data>
        <template id="three_columns_assets_editor" name="website_blog_entries assets" inherit_id="website.assets_editor" groups="base.group_website_publisher">
            <xpath expr="." position="inside">
                <script type="text/javascript" src="/website_snippet_blog_display_post/static/src/js/website_blog_display_post.js"/>
            </xpath>
        </template> 
-
        <template id="blog_postcontent">
           <t t-set="blogpost" t-value="request.env['blog.post'].get_post(parameter_id,blog_id)"/>
           <div class="col-md-8" t-if="blogpost">

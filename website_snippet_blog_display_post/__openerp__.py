@@ -11,7 +11,7 @@
     'category': 'Website',
     'depends': [
         'website_blog_layout_options',
-        'website_parametric_snippets'
+        'website_parameterized_snippet',
     ],
     'data': [
         'views/templates.xml',
