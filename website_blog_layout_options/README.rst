@@ -9,8 +9,8 @@ Layout Options and Extensions for Blog
 
 * Adds 2 extra display types of posts to the post list of any blog:
 
-    *  Teaser: The title of the post with a small teaser and a "read more" link.
-    *Complete: The complete post in the post list
+    * Teaser: The title of the post with a small teaser and a "read more" link.
+    * Complete: The complete post in the post list
 
 * Blog posts can have thumbnails 
 
