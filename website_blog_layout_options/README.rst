@@ -2,16 +2,15 @@
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 
-===========================
-website_blog_layout_options
-===========================
+======================================
+Layout Options and Extensions for Blog
+======================================
 
 
 * Adds 2 extra display types of posts to the post list of any blog:
 
-1. Teaser: The title of the post with a small teaser and a "read more" link.
-2. Complete: The complete post in the post list
-
+    *  Teaser: The title of the post with a small teaser and a "read more" link.
+    *Complete: The complete post in the post list
 
 * Blog posts can have thumbnails 
 
@@ -47,7 +46,7 @@ image and without.
 Contributors
 ------------
 
-* Giovanni francesco Capalbo <giovanni@therp.nl>
+* Giovanni Francesco Capalbo <giovanni@therp.nl>
 * Holger Brunn <hbrunn@therp.nl>
 
 

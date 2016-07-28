@@ -8,8 +8,7 @@
                         <div class="pull-left" />
                     </t>
                     <t t-if="blog_post.thumbnail">
-                        <div  class="pull-left"    
-                            style = "margin: 5px 12px 5px 5px;"   
+                        <div  class="pull-left thumbnail"    
                             t-field="blog_post.thumbnail.datas" 
                             t-field-options = '{"widget": "image", "class" : "pull-left mt-16 media-object", "max_width" : 64 }'
                             />
@@ -18,8 +17,7 @@
                 </t>
                 <t t-if="blog_post.display_type == 'teaser'">
                     <t t-if="blog_post.thumbnail">
-                        <div  class="pull-left"    
-                            style = "margin: 5px 12px 5px 5px;"   
+                        <div  class="pull-left thumbnail"    
                             t-field="blog_post.thumbnail.datas" 
                             t-field-options = '{"widget": "image", "class" : "pull-left mt-16 media-object", "max_width" : 64 }'
                             />

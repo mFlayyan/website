@@ -1,22 +1,6 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    This module copyright (C) 2015 Therp BV (<http://therp.nl>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2016 Therp BV <http://therp.nl>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import models, fields, api
 
 
@@ -58,9 +42,9 @@ class WebsiteBlog(models.Model):
              "of the posts of this blog, the setting "
              "can be changed per blog entry later.")
 
-    @api.one
+    @api.multi
     def set_all_posts(self):
-        posts = self.env['blog.post'].search([(
-            'blog_id', '=', self.id)])
-        posts.write({'display_type': self.display_type})
-        return {}
+        for this in self:
+            posts = self.env['blog.post'].search([(
+                'blog_id', '=', this.id)])
+            posts.write({'display_type': this.display_type})
