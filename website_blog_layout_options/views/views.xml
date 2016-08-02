@@ -6,9 +6,13 @@
             <field name="inherit_id" ref="website_blog.view_blog_blog_form"/>
             <field name="arch" type="xml">
                 <field name="description" position="after">
+                    <group>
                     <field name="thumbnail_width"/>
                     <field name="display_type"/>
-                    <button name="set_all_posts" string="Set all posts to the same display type" type="object"/>
+                   </group>
+                    <group>
+                        <buttonn ame="set_all_posts" string="Set all posts to the same display type" type="object"/>
+                    </group>
                 </field>
 
                 <field name="name" position="before">
