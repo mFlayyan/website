@@ -34,7 +34,7 @@ class WebsiteBlog(models.Model):
              "in content \n will be used in all blogposts of this blog",
         default='128')
 
-    background_image_show = fields.Selection( 
+    background_image_show = fields.Selection(
         selection="_get_image_options",
         string="Default blog-wide setting for background image",
         default='no_image',

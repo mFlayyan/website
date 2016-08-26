@@ -96,5 +96,6 @@ class BlogPost(models.Model):
     category_id = fields.Many2many(
         string="Categories",
         comodel_name='blog.category',
-        help='Blog post category, categories are a different type of classification, other than tags')
-
+        help='Blog post category, categories are a different type of'
+             'classification, other than tags'
+        )

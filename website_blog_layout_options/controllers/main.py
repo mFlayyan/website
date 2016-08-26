@@ -5,13 +5,15 @@ from openerp import http
 from openerp.addons.website_blog.controllers.main import WebsiteBlog, QueryURL
 from openerp.addons.web.http import request
 
+
 class WebsiteBlog(WebsiteBlog):
 
     # note route must allways be the most external
 
     @http.route([
         '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>',
-        '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>/page/<int:page>',
+        '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>'
+        '/page/<int:page>',
         '/cat/<model("blog.category"):cat>',
         '/cat/<model("blog.category"):cat>/page/<int:page>',
         ], type='http', auth="public", website=True)
@@ -76,7 +78,3 @@ class WebsiteBlog(WebsiteBlog):
             cr, uid, allcat_ids, context=context)
         result.qcontext['current_category'] = False
         return result
-
-
-
-
