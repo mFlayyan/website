@@ -38,6 +38,7 @@ class WebsiteBlog(models.Model):
         selection="_get_image_options",
         string="Default blog-wide setting for background image",
         default='no_image',
+        required=True,
         help="allows to set default header image formatting "
              "of the posts of this blog, the setting "
              "can be changed per blog entry later.")
