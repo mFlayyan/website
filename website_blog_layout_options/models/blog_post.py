@@ -47,21 +47,25 @@ class BlogPost(models.Model):
     @api.onchange('blog_id')
     def set_new_default(self):
         self.background_image_show = self.blog_id.background_image_show
-
     
-    def _make_thumbnail(self):
-        import pudb
-        pudb.set_trace()
-        attachment_dict = {
-                'name': self.name + 'thumbnail',
-                'datas': self.thumbnail_binary,
-                'type': 'binary',
-                'res_model': 'ir.ui.view',
-                }
-        new_attachment = self.env['ir.attachment'].sudo().create(
-            attachment_dict
-        )
-        self.thumbnail = new_attachment.id
+    @api.depends('thumbnail')
+    def _get_thumbnail(self):
+        if self.thumbnail:
+            self.thumbnail_binary = thumbnail.datas
+    
+
+    def _write_thumbnail(self):
+        if self.thumbnail_binary:
+            attachment_dict = {
+                    'name': self.name + 'thumbnail',
+                    'datas': self.thumbnail_binary,
+                    'type': 'binary',
+                    'res_model': 'ir.ui.view',
+                    }
+            new_attachment = self.env['ir.attachment'].sudo().create(
+                attachment_dict
+            )
+            self.thumbnail = new_attachment.id
 
     background_image_show = fields.Selection(
         string="Type of header image on blog post",
@@ -81,8 +85,9 @@ class BlogPost(models.Model):
     )
 
     thumbnail_binary = fields.Binary(
-        string='',
-        compute=_make_thumbnail,
+        string='Blog Post Thumbnail',
+        compute=_get_thumbnail,
+        inverse=_write_thumbnail,
         help='A small image shown in teaser and content'
     )
 
