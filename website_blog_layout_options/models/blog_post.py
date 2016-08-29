@@ -35,7 +35,7 @@ class BlogPost(models.Model):
                 # trim it to the intended length
                 self.teaser = tools.html_email_clean(
                     res[:teaser_length] + " ...")
-                self.teaser_input = tools.html_email_clean( 
+                self.teaser_input = tools.html_email_clean(
                     res[:teaser_length] + " ...")
             else:
                 # has no teaser or content,  just revert.
@@ -53,8 +53,8 @@ class BlogPost(models.Model):
         selection=lambda self: self.blog_id._get_image_options(),
         default=lambda self: self.blog_id.background_image_show,
         required=True,
-        help="Choose if how you want to display the blog post:"
-        "Just the title above the post, a small header image"
+        help="Choose if how you want to display the blog post: "
+        "Just the title above the post, a small header image "
         "above the blog post title, or a big full screen image,"
         "before showing the post, (odoo default)")
 
@@ -84,6 +84,6 @@ class BlogPost(models.Model):
     category_id = fields.Many2many(
         string="Categories",
         comodel_name='blog.category',
-        help='Blog post category, categories are a different type of'
+        help='Blog post category, categories are a different type of '
              'classification, other than tags'
         )
