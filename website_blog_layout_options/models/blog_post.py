@@ -48,6 +48,21 @@ class BlogPost(models.Model):
     def set_new_default(self):
         self.background_image_show = self.blog_id.background_image_show
 
+    
+    def _make_thumbnail(self):
+        import pudb
+        pudb.set_trace()
+        attachment_dict = {
+                'name': self.name + 'thumbnail',
+                'datas': self.thumbnail_binary,
+                'type': 'binary',
+                'res_model': 'ir.ui.view',
+                }
+        new_attachment = self.env['ir.attachment'].sudo().create(
+            attachment_dict
+        )
+        self.thumbnail = new_attachment.id
+
     background_image_show = fields.Selection(
         string="Type of header image on blog post",
         selection=lambda self: self.blog_id._get_image_options(),
@@ -56,11 +71,18 @@ class BlogPost(models.Model):
         help="Choose if how you want to display the blog post: "
         "Just the title above the post, a small header image "
         "above the blog post title, or a big full screen image,"
-        "before showing the post, (odoo default)")
+        "before showing the post, (odoo default)"
+    )
 
     thumbnail = fields.Many2one(
         string='Blog Post Thumbnail',
         comodel_name='ir.attachment',
+        help='A small image shown in teaser and content'
+    )
+
+    thumbnail_binary = fields.Binary(
+        string='',
+        compute=_make_thumbnail,
         help='A small image shown in teaser and content'
     )
 
