@@ -8,8 +8,8 @@
             </xpath>
         </template>
 
-        <template id="employee_form_extended" model="ir.ui.view"  inherit_id="website_hr.about_us">
-            <xpath expr="//field[@name='public_info']" position="after">
+        <template id="employee_form_extended" model="ir.ui.view"  inherit_id="website_hr.aboutus">
+            <xpath expr="//div[@t-field='employee.public_info']" position="after">
                 <t t-if="employee.work_email">
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
                     <div t-field="employee.work_email"/>
