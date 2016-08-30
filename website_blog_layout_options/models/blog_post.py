@@ -51,21 +51,20 @@ class BlogPost(models.Model):
     @api.depends('thumbnail')
     def _get_thumbnail(self):
         if self.thumbnail:
-            self.thumbnail_binary = thumbnail.datas
+            self.thumbnail_binary = self.thumbnail.datas
     
 
     def _write_thumbnail(self):
-        if self.thumbnail_binary:
-            attachment_dict = {
-                    'name': self.name + 'thumbnail',
-                    'datas': self.thumbnail_binary,
-                    'type': 'binary',
-                    'res_model': 'ir.ui.view',
-                    }
-            new_attachment = self.env['ir.attachment'].sudo().create(
-                attachment_dict
-            )
-            self.thumbnail = new_attachment.id
+        attachment_dict = {
+                'name': self.name + 'thumbnail',
+                'datas': self.thumbnail_binary,
+                'type': 'binary',
+                'res_model': 'ir.ui.view',
+                }
+        new_attachment = self.env['ir.attachment'].sudo().create(
+            attachment_dict
+        )
+        self.thumbnail = new_attachment.id
 
     background_image_show = fields.Selection(
         string="Type of header image on blog post",
