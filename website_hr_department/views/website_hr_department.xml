@@ -87,6 +87,22 @@
           </h5>
           <div t-field="employee.job_id"/>
           <div t-field="employee.public_info" class="text-info oe_subdescription"/>
+          <t t-if="employee.work_email">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <div t-field="employee.work_email"/>
+          </t>
+          <t t-if="employee.github_website">
+              <i class="fa fa-github" aria-hidden="true"></i>
+              <div t-field="employee.github_website"/>
+          </t>
+          <t t-if="employee.linkedin_website">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+              <div t-field="employee.linkedin_website"/>
+          </t>
+          <t t-if="employee.twitter_website">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+              <div t-field="employee.twitter_website"/>
+          </t>
         </section>
       </div>
     </template>
