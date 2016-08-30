@@ -6,7 +6,19 @@
       <xpath expr="." position="inside">
         <link rel="stylesheet" href="/website_hr_department/static/src/css/website_hr_department.css"/>
       </xpath>
-    </template>
+  </template>
+
+
+    <record id="employee_form_extended" model="ir.ui.view"  inherit_id="hr.view_employee_form">
+        <field name="name">hr.employee.formextended</field>
+        <xpath expr="//field[@name='mobile_phone']" position="after">
+            <field name="bio_website"/>
+            <field name="github_website"/>
+            <field name="linkedin_website"/>
+            <field name="twitter_website"/>
+        </xpath>
+    </record>
+
 
     <template id="departments" name="Departments" page="True">
       <t t-call="website.layout">
