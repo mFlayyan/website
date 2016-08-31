@@ -33,18 +33,19 @@
             <field name="name"> hr.employee.extend.websiteinfo</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
-            <xpath expr="//page[last()]" position="after">
-                <field name="arch" type="xml">
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[last()]" position="after">
                     <page name="website_employee_information" string="Employee info for website">
                         <group>
-                         <field name="bio_website"/>
-                         <field name="github_website"/>
-                         <field name="linkedin_website"/>
-                         <field name="twitter_website"/>
+                            <field name="bio_website"/>
+                            <field name="github_website"/>
+                            <field name="linkedin_website"/>
+                            <field name="twitter_website"/>
                         </group>
                     </page>
-                </field>
-            </xpath>
+                </xpath>
+            </field>
         </record>
 
     </data>
