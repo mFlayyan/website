@@ -8,11 +8,11 @@
             </xpath>
         </template>
 
-        <template id="employee_form_extended" model="ir.ui.view"  inherit_id="website_hr.aboutus">
+        <template id="employee_form_extended" inherit_id="website_hr.aboutus">
             <xpath expr="//div[@t-field='employee.public_info']" position="after">
                 <t t-if="employee.work_email">
                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                    <div t-field="employee.work_email"/>
+                    <div  t-field="employee.work_email"/>
                 </t>
                 <t t-if="employee.github_website">
                     <i class="fa fa-github" aria-hidden="true"></i>
@@ -28,5 +28,24 @@
                 </t>
             </xpath>
         </template>
+
+        <record id="res_partner_additional_website" model="ir.ui.view">
+            <field name="name"> hr.employee.extend.websiteinfo</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <xpath expr="//page[last()]" position="after">
+                <field name="arch" type="xml">
+                    <page name="website_employee_information" string="Employee info for website">
+                        <group>
+                         <field name="bio_website"/>
+                         <field name="github_website"/>
+                         <field name="linkedin_website"/>
+                         <field name="twitter_website"/>
+                        </group>
+                    </page>
+                </field>
+            </xpath>
+        </record>
+
     </data>
 </openerp>
