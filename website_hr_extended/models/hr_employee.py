@@ -7,8 +7,8 @@ from openerp import api, fields, models
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    bio_website = fields.Text('Bio')
-    github_website = fields.Char('Github')
-    linkedin_website = fields.Char('Linkedin')
-    twitter_website = fields.Char('Twitter')
+    bio_website = fields.Text('Biography (for about us page) ')
+    github_website = fields.Char('Github Address (for about us page)')
+    linkedin_website = fields.Char('Linkedin Address (for about us page)')
+    twitter_website = fields.Char('Twitter Address (for about us page)' )
 

@@ -9,22 +9,45 @@
         </template>
 
         <template id="employee_form_extended" inherit_id="website_hr.aboutus">
+            <xpath expr="//div[@t-foreach='employee_ids']" position="attributes">
+                <attribute name="class">col-sm-12 col-lg-6 text-center</attribute>
+            </xpath>
             <xpath expr="//div[@t-field='employee.public_info']" position="after">
+
+                <t t-if="employee.bio_website">
+                    <em> <div  t-field="employee.bio_website"/> </em>
+                </t>
+                <br/>
                 <t t-if="employee.work_email">
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                    <div  t-field="employee.work_email"/>
+                    <a t-attf-href="mailto:{{ employee.work_email }}" class="btn btn-primary">                    <i class="fa fa-envelope-o" aria-hidden="true">
+                            <span t-esc="employee.work_email"/>
+
+                        </i>
+                    </a>
                 </t>
+                <br/>
                 <t t-if="employee.github_website">
-                    <i class="fa fa-github" aria-hidden="true"></i>
-                    <div t-field="employee.github_website"/>
+                    <a t-att-href="employee.github_website" t-att-target="'_blank'">
+                        <i class="fa fa-github" aria-hidden="true">
+                            <t t-esc="employee.github_website"/>
+                        </i>
+                    </a>
                 </t>
+                <br/>
                 <t t-if="employee.linkedin_website">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    <div t-field="employee.linkedin_website"/>
+                    <a t-att-href="employee.linkedin_website" t-att-target="'_blank'">
+                        <i class="fa fa-linkedin" aria-hidden="true">
+                            <t t-esc="employee.linkedin_website"/>
+                        </i>
+                    </a>
                 </t>
+                <br/>
                 <t t-if="employee.twitter_website">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                    <div t-field="employee.twitter_website"/>
+                    <a t-att-href="employee.twitter_website" t-att-target="'_blank'">
+                        <i class="fa fa-twitter" aria-hidden="true">
+                            <span t-field="employee.twitter_website"/>
+                        </i>
+                    </a>
                 </t>
             </xpath>
         </template>
