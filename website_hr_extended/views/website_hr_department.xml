@@ -18,28 +18,17 @@
                     <em> <div  t-field="employee.bio_website"/> </em>
                 </t>
                 <br/>
-                
-          <div class="col-sm-12">
 
-                    <div class="col-sm-2">
-                    </div>
-                <div t-if="employee.work_email" class="col-sm-8 text-center">
-                    <a t-attf-href="mailto:{{ employee.work_email }}">                                  
-                        <i class="fa fa-envelope-o fa-1g" aria-hidden="true">
-                            <span t-esc="employee.work_email"/>
-                        </i>
-                    </a>
-                </div>
-
-                    <div class="col-sm-2">
-                    </div>
-            </div>
-                <br/>
-                <br/>
                 <div class="col-sm-12">
-                    <div class="col-sm-3">
+
+                    <div t-if="employee.work_email" class="col-sm-9 text-center">
+                        <a t-attf-href="mailto:{{ employee.work_email }}">                                  
+                            <i class="fa fa-envelope-o fa-1g" aria-hidden="true">
+                                <span t-esc="employee.work_email"/>
+                            </i>
+                        </a>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <t t-if="employee.github_website">
                             <a t-att-href="employee.github_website" t-att-target="'_blank'">
                                 <i class="fa fa-github fa-2x" aria-hidden="true">
@@ -48,7 +37,7 @@
                         </t>
                     </div>
 
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <t t-if="employee.linkedin_website">
                             <a t-att-href="employee.linkedin_website" t-att-target="'_blank'">
                                 <i class="fa fa-linkedin fa-2x" aria-hidden="true">
@@ -56,15 +45,13 @@
                             </a>
                         </t>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <t t-if="employee.twitter_website">
                             <a t-att-href="employee.twitter_website" t-att-target="'_blank'">
                                 <i class="fa fa-twitter fa-2x" aria-hidden="true">
                                 </i>
                             </a>
                         </t>
-                    </div>
-                    <div class="col-sm-3">
                     </div>
                 </div>
             </xpath>
