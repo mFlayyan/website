@@ -58,7 +58,7 @@
                             <li t-attf-style="display: list-item;">
                                 <a t-attf-href="#{blog_url('',['tag', 'cat'], tag=None, cat=nav_cat)}">
                                     <b><span t-field="nav_cat.name"/></b>
-                                    - <t t-esc="len(nav_cat.post_ids)" /> posts 
+                                     <span class="pull-right badge" t-esc="len(nav_cat.post_ids)" /> posts 
                                 </a>
                             </li>
                         </t>
