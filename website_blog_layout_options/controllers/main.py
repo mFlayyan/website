@@ -10,6 +10,7 @@ class WebsiteBlog(WebsiteBlog):
 
     # note route must allways be the most external
 
+    
     @http.route([
         '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>',
         '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>'
@@ -23,8 +24,7 @@ class WebsiteBlog(WebsiteBlog):
         )
         cr, uid, context = request.cr, request.uid, request.context
         blog_cat_object = request.env['blog.category']
-        # categories are not per-blog
-        allcat_ids = blog_cat_object.search(cr, uid, [], context=context)
+        allcat_ids = blog_cat_object.search([])
         domain = []
         if blog:
             domain += [('blog_id', '=', blog.id)]
@@ -62,8 +62,7 @@ class WebsiteBlog(WebsiteBlog):
             result.qcontext['blog_posts'] = blog_posts
             result.qcontext['pager'] = pager
             result.qcontext['current_category'] = cat
-        result.qcontext['categories'] = blog_cat_object.browse(
-            cr, uid, allcat_ids, context=context)
+        result.qcontext['categories'] = allcat_ids
         return result
 
     @http.route()
