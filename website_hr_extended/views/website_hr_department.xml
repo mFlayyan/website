@@ -14,7 +14,7 @@
                     <t t-call="website.publish_management"><t t-set="object" t-value="employee"/></t>
                     <div class="row">
                         <div class="col-xs-12">
-                            <div class="thumbnail" style="padding;2px;">
+                            <div class="thumbnail" style="height:470px">
                                 <img t-att-src="website.image_url(employee, 'image_medium')" class="img shadow img-rounded"/>
                                 <div class="caption">
                                     <h3><strong t-field="employee.name"></strong></h3>
