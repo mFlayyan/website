@@ -22,7 +22,6 @@
                                 style = "margin: 0px 6px 0px 0px;"   
                                 t-field="blog_post.thumbnail.datas" 
                                 t-field-options = '{"widget": "image", "class" : "o_image_floating o_margin_s pull left", "max_width" : 64 }'
-                            
                                 />
                         </t>
                         <div t-field="blog_post.content"/>
