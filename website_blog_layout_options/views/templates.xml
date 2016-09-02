@@ -10,14 +10,58 @@
             </xpath>
         </template>
 
+        <template id="blog_teaser" inherit_id="website_blog.blog_post_short" name="blogTeaser">
+            <xpath expr="//h2[@t-field='blog_post.name']" position="after">
+                <div class="row mb16">
+                    <t t-if="blog_post.display_type == 'complete'"> 
+                        <t t-if="not blog_post.thumbnail">
+                            <div class="pull-left" />
+                        </t>
+                        <t t-if="blog_post.thumbnail">
+                            <div  class="pull-left thumbnail"    
+                                style = "margin: 0px 6px 0px 0px;"   
+                                t-field="blog_post.thumbnail.datas" 
+                                t-field-options = '{"widget": "image", "class" : "o_image_floating o_margin_s pull left", "max_width" : 64 }'
+                            
+                                />
+                        </t>
+                        <div t-field="blog_post.content"/>
+                    </t>
+                    <t t-if="blog_post.display_type == 'teaser'">
+                        <t t-if="blog_post.thumbnail">
+                            <div  class="pull-left thumbnail"   
+                                style = "margin: 0px 6px 0px 0px;"   
+                                t-field="blog_post.thumbnail.datas" 
+                                t-field-options = '{"widget": "image",  "max_width" : 64 }'
+                                />
+                        </t>
+                        <t t-if="not blog_post.thumbnail">
+                            <div class="pull-left">
+                            </div>
+                        </t>
+                        <p t-esc="blog_post.teaser"/>
+                            <a t-attf-href="/blog/#{ slug(blog_post.blog_id) }/post/#{ slug(blog_post)}">
+                            </a>
+                    </t>
+                </div>
+            </xpath>
+            <xpath expr="//h4[@t-field='blog_post.subtitle']" position="replace">
+                <span></span>
+            </xpath>
+
+            <xpath expr="//span[@t-field='blog_post.author_avatar']" position="replace">
+                <span/>
+            </xpath>
+        </template>
+
         <template id="show_post_complete_layout_options" 
             inherit_id="website_blog.blog_post_complete">
             <xpath expr="//div[@id='blog_content']" position="before">
                 <t t-if="blog_post.thumbnail">
                     <div  class="pull-left"    
-                        style = "margin: 5px 12px 5px 5px;"   
+                        style = "margin: 0px 6px 0px 0px;"   
                         t-field="blog_post.thumbnail.datas" 
-                        t-field-options = '{"widget": "image", "class" : "pull-left mt-16 media-object", "max_width" : 192 }'
+                        t-field-options = '{"widget": "image",  "max_width" : 192 }'
                         />
                 </t>
             </xpath>

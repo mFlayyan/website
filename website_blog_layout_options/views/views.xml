@@ -11,7 +11,7 @@
                     <field name="display_type"/>
                    </group>
                     <group>
-                        <buttonn ame="set_all_posts" string="Set all posts to the same display type" type="object"/>
+                        <button ame="set_all_posts" string="Set all posts to the same display type" type="object"/>
                     </group>
                 </field>
 
@@ -31,8 +31,7 @@
                     <field name="display_type"/>
                     <p/>
                     <group name="teaser" attrs="{'invisible': [('display_type', '!=', 'teaser')]}" colspan="4">
-                        <field name="teaser_input" attrs="{'invisible': [('extract_auto','=', True)]}"/>
-                        <field name="extract_auto"/>
+                        <field name="teaser"/> 
                     </group>
                 </field>
 

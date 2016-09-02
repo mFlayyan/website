@@ -13,7 +13,6 @@
     ],
     "data": [
         'views/templates.xml',
-        'views/teaser.xml',
         'views/views.xml',
     ],
     "installable": True,

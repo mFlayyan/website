@@ -10,13 +10,19 @@ class BlogPost(models.Model):
 
     _inherit = 'blog.post'
 
+    """
+    extract teaser may be used manually in future.
+    it as a computed field.
+    TODO: add a button "extract teaser" to manually set it
+    """
+
+    """
     @api.one
-    @api.onchange('extract_auto', 'display_type', 'content', 'teaser_input')
     def _extract_teaser(self):
         if self.display_type != "teaser":
             return
         # no empty teasers
-        if (self.teaser_input) and (not self.extract_auto):
+        if (self.teaser) and (not self.extract_auto):
             self.teaser = tools.html_email_clean(self.teaser_input)
         else:
             res = ""
@@ -43,6 +49,7 @@ class BlogPost(models.Model):
                 # content cannot be inserted in backend by default.
                 # add content to backend in view
                 self.display_type = "no_teaser"
+        """
 
     @api.onchange('blog_id')
     def set_new_default(self):
@@ -100,12 +107,8 @@ class BlogPost(models.Model):
              "title+first lines of post select Complete if you prefer,"
              "the entire text  to be viewed in the blog list.")
 
-    teaser = fields.Text(string='Teaser for Blog Post',
-                         compute="_extract_teaser")
-
-    teaser_input = fields.Text(string="Teaser text")
-    extract_auto = fields.Boolean(
-        string="Create teaser from content", default=False)
+    #remove automatic extraction
+    teaser = fields.Text(string='Teaser for Blog Post')
 
     category_id = fields.Many2many(
         string="Categories",
