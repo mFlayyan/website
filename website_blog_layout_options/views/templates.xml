@@ -29,7 +29,7 @@
                     <t t-if="blog_post.display_type == 'teaser'">
                         <t t-if="blog_post.thumbnail">
                             <div  class="pull-left thumbnail"   
-                                style = "margin: 0px 6px 0px 0px;"   
+                                style = "margin: 0px 6px 0px 18px;"   
                                 t-field="blog_post.thumbnail.datas" 
                                 t-field-options = '{"widget": "image",  "max_width" : 64 }'
                                 />
@@ -58,7 +58,7 @@
             <xpath expr="//div[@id='blog_content']" position="before">
                 <t t-if="blog_post.thumbnail">
                     <div  class="pull-left"    
-                        style = "margin: 0px 6px 0px 0px;"   
+                        style = "margin: 0px 6px 0px 18px;"   
                         t-field="blog_post.thumbnail.datas" 
                         t-field-options = '{"widget": "image",  "max_width" : 192 }'
                         />
