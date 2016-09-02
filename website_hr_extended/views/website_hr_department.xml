@@ -10,7 +10,7 @@
 
         <template id="employee_form_extended" inherit_id="website_hr.aboutus">
             <xpath expr="//div[@t-foreach='employee_ids']" position="replace">
-                <div t-foreach="employee_ids" t-as="employee" class="col-sm-6 col-lg-5 mt16 text-center colsize">            
+                <div t-foreach="employee_ids.sorted(key=lambda a: a.position)" t-as="employee" class="col-sm-6 col-lg-5 mt16 text-center colsize">            
                     <t t-call="website.publish_management"><t t-set="object" t-value="employee"/></t>
                     <div class="row">
                         <div class="col-xs-12">
@@ -67,6 +67,7 @@
                 <xpath expr="//page[last()]" position="after">
                     <page name="website_employee_information" string="Employee info for website">
                         <group>
+                            <field name="position"/>
                             <field name="bio_website"/>
                             <field name="github_website"/>
                             <field name="linkedin_website"/>
