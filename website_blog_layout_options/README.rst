@@ -40,7 +40,8 @@ image and without.
 
   A widget is availiable to show the category list in the right column.
 
-
+* Blog will have a slightly larger right column , this can be selected from 
+  on/off Knowledge > Blogs. the default is the larger version.
 
 
 Contributors
