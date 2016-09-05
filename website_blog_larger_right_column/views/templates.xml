@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="website_blog_larger_right_column assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/website_blog_larger_right_column/static/src/js/website_blog_larger_right_column.js"></script>
+                <link rel="stylesheet" href="/website_blog_larger_right_column/static/src/css/website_blog_larger_right_column.css"/>
+            </xpath>
+        </template>
+
+		<!-- Option:Right Column: bigger size -->
+		<template id="opt_blog_varsize" name="Tags"
+			inherit_id="website_blog.index_right" active="False" customize_show="True">
+			<xpath expr="//div[@id='main_column']" position="attributes">
+				<attribute name="class">col-sm-6</attribute>
+			</xpath>
+			<xpath expr="//div[@id='main_column']" position="attributes">
+				<attribute name="class">col-lg-4 col-lg-offset-1 col-sm-6</attribute>
+			</xpath>
+	    </template>
+ 
+
+    </data>
+</openerp>
