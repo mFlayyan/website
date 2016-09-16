@@ -8,15 +8,27 @@
        </template> 
        <template id="blog_postcontent">
           <t t-set="blogpost" t-value="request.env['blog.post'].get_post(parameter_id,blog_id)"/>
-          <div class="col-md-8" t-if="blogpost">
-              <h4>
-                  <t t-esc="blogpost.name or 'Selected Post Has No Title'"/>
-              </h4>
-              <p>
-                  <t t-esc="blogpost.teaser or 'Selected Post Has No Teaser'"/>
-              </p>
+          <div class="col-md-16" t-if="blogpost">
+                  <t t-if="blogpost.name">
+                      <a t-attf-href="/blog/#{ slug(blogpost.blog_id) }/post/#{ slug(blogpost)}">
+                          <b> <h4 t-esc="blogpost.name ">
+                          </h4></b>
+                      </a>
+                  </t>
+              <t t-if="blogpost.teaser">
+                  <a t-attf-href="/blog/#{ slug(blogpost.blog_id) }/post/#{ slug(blogpost)}">
+                      <p t-esc="blogpost.teaser">
+                      </p>
+                  </a>
+              </t>
+              
+              <t t-if="not blogpost.teaser">
+                  <p>Selected blog has no teaser</p>
+              </t>
+
+
           </div>
-          <div class="col-md-8" t-if="not blogpost">
+          <div class="col-md-16" t-if="not blogpost">
               <p>'No blog post selected , please do so by selecting fro widget configuration options'</p>
           </div>
       </template>
@@ -30,7 +42,7 @@
                       <span class="oe_snippet_thumbnail_title">Show blog post</span>
                   </div>
                   <section class="oe_snippet_body jq_blg_entry" >
-                      <div class="parametricTemplate">
+                      <div class="parametricTemplate mt16 mb16">
                           <!-- the template call code is injected via javascript 
                                the class is parametricTemplate in order to 
                                override odoo's normal behaviour 
