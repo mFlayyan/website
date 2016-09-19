@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <template id="assets_backend" 
-            name="website_blog_layout_options assets" 
-            inherit_id="web.assets_backend">
-            <xpath expr="." position="inside">
-                <link rel="stylesheet" 
-                    href="/website_blog_layout_options/static/src/css/website_blog_layout_options.css"/>
-            </xpath>
-        </template>
+
+        
+        
+	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options assets" >
+    	<xpath expr="/t" position="inside">
+	        <link rel='stylesheet' href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
+        	<script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/>
+    	</xpath>
+	</template>
+ 
 
         <template id="blog_teaser" inherit_id="website_blog.blog_post_short" name="blogTeaser">
             <xpath expr="//h2[@t-field='blog_post.name']" position="after">
@@ -56,6 +58,8 @@
         <template id="show_post_complete_layout_options" 
             inherit_id="website_blog.blog_post_complete">
             <xpath expr="//div[@id='blog_content']" position="before">
+
+                <h1 t-field="blog_post.background_image_show" />
                 <t t-if="blog_post.thumbnail">
                     <div  class="pull-left"    
                         style = "margin: 0px 6px 0px 18px;"   
@@ -64,14 +68,20 @@
                         />
                 </t>
             </xpath>
-            <xpath expr="//div[@id='title']" position="attributes">    
-                <attribute name="t-attf-style" />
-                <!-- todo reuse the full height calculator in js and divide it by four or five to have a small header (instead of the lazy 300px) -->
-                <attribute name="t-att-style"> 'background-image: ' + (' none;height: 300px;' if blog_post.background_image_show == 'no_image' else 'url(#'+ blog_post.background_image + '); height: 300px;' if blog_post.background_image_show == 'small_image' else 'url(#' + blog_post.background_image + ')' if blog_post.background_image_show == 'big_image' else '')
-                </attribute> 
-                <attribute name="class" />
-                <attribute name="t-att-class">'cover' + (' cover_js_small container' if (blog_post.background_image_show == 'small_image' or blog_post.background_image_show == 'no_image') else ' js_fullheight' if blog_post.background_image_show == 'big_image' else '' )</attribute>
+            <xpath expr="//div[@id='title']" position="attributes">  
+             <t t-if="blog_post.background_image_show == 'no_image'">
+                <attribute name="class">cover js_nobackground</attribute>
+            </t>
+             <t t-if="blog_post.background_image_show == 'small_image'">
+                 <attribute name="class">cover js_smallheight </attribute>
+             </t>
+             <!--
+                  <attribute name="t-attf-class">'cover js_fullheight' + ('js_nobackground' if blog_post.background_image_show == 'no_image' else 'js_smallheight' if blog_post.background_image_show == 'small_image' else '')
+                  </attribute>
+                  -->
             </xpath>
+         
+
         </template>
 
         <template id="blog_show_cat_title" 

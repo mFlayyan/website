@@ -38,7 +38,9 @@
 
                 <field name="name" position="before">
                     <field name="background_image_show"/>
-                    <field name="background_image" attrs=" {'invisible': [('background_image_show', '=', 'no_image')]}"/>
+                    
+                    <!--  can set this from the front end uncomment if needed here
+                          <field name="background_image" attrs=" {'invisible': [('background_image_show', '=', 'no_image')]}"/> -->
                 </field>
 
                 

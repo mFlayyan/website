@@ -43,7 +43,7 @@ class WebsiteBlog(models.Model):
     background_image_show = fields.Selection(
         selection="_get_image_options",
         string="Default blog-wide setting for background image",
-        default='no_image',
+        default='small_image',
         required=True,
         help="allows to set default header image formatting "
              "of the posts of this blog, the setting "
