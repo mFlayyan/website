@@ -14,6 +14,7 @@
     "data": [
         'views/templates.xml',
         'views/views.xml',
+        'security/ir.model.access.csv',
     ],
     "installable": True,
 }
