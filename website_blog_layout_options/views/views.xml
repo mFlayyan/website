@@ -38,14 +38,19 @@
 
                 <field name="name" position="before">
                     <field name="background_image_show"/>
-                    <field name="category_id"/>
                     <field name="background_image" attrs=" {'invisible': [('background_image_show', '=', 'no_image')]}"/>
                 </field>
 
+                
                 <sheet position="inside">
                     <h2>Content</h2>
                     <field name="content" widget="html"/>
                 </sheet>
+
+                <field name="content" position="after">
+                    <field name="category_id"  widget="many2many_tags"/>
+                </field>
+
             </field>
         </record>
 
