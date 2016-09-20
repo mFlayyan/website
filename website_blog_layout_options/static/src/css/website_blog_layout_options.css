@@ -1,11 +1,12 @@
 /* best way to  contain an image cross browser approved */
 
-div.cover_js_small
+div.js_smallheight
 {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
+
 
 div.thumbnail
 {

@@ -68,20 +68,10 @@
                         />
                 </t>
             </xpath>
+
             <xpath expr="//div[@id='title']" position="attributes">
-
-
-             <t t-if="blog_post.background_image_show == 'no_image'">
-                <attribute name="class">cover js_nobackground</attribute>
-            </t>
-             <t t-if="blog_post.background_image_show == 'small_image'">
-                 <attribute name="class">cover js_fullheight js_smallheight </attribute>
-             </t>
-             <!--
-                  <attribute name="t-attf-class">'cover js_fullheight' + ('js_nobackground' if blog_post.background_image_show == 'no_image' else 'js_smallheight' if blog_post.background_image_show == 'small_image' else '')
-                  </attribute>
-                  -->
-
+                <attribute name="class" />
+                <attribute name="class">cover  js_fullheight{{'js_nobackground' if blog_post.background_image_show == 'no_image' else 'js_smallheight' if blog_post.background_image_show == 'small_image' else ''}}"  </attribute>
             </xpath>
          
 
