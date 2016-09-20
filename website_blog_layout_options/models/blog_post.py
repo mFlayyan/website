@@ -16,7 +16,6 @@ class BlogPost(models.Model):
     TODO: add a button "extract teaser" to manually set it
     """
 
-    """
     @api.one
     def _extract_teaser(self):
         if self.display_type != "teaser":
@@ -49,7 +48,6 @@ class BlogPost(models.Model):
                 # content cannot be inserted in backend by default.
                 # add content to backend in view
                 self.display_type = "no_teaser"
-        """
 
     @api.onchange('blog_id')
     def set_new_default(self):

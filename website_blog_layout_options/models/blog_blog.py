@@ -10,8 +10,7 @@ class WebsiteBlog(models.Model):
 
     @api.model
     def _get_image_options(self):
-        return [('no_image', 'No header image'),
-                ('small_image', 'Show small header image'),
+        return [('small_image', 'Show small header image'),
                 ('big_image', 'Show big header image')]
 
     @api.model
@@ -25,6 +24,7 @@ class WebsiteBlog(models.Model):
         selection="_get_display_types",
         required=True,
         default='no_teaser')
+    
 
     larger_right_column = fields.Boolean(
         string="Larger Right Column Layout",

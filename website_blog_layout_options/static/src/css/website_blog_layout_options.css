@@ -2,10 +2,12 @@
 
 div.js_smallheight
 {
+    min-height:200px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
+
 
 
 div.thumbnail
