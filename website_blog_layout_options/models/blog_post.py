@@ -95,6 +95,40 @@ class BlogPost(models.Model):
         help='A small image shown in teaser and content'
     )
 
+    
+    def _make_background(self):
+	self.background_image = self.background_image_binary
+        attachment_dict = {
+                'name': self.name + 'background',
+                'datas': self.background_image_binary,
+                'type': 'binary',
+                'res_model': 'ir.ui.view',
+                }
+        new_attachment = self.env['ir.attachment'].sudo().create(
+            attachment_dict
+        )
+        self.background_image_elaborate = new_attachment.id
+	image ='/website/image/ir.attachment/%s/datas'% self.background_image_elaborate.id
+	self.write({'background_image': image})
+    	
+    @api.depends('background_image_binary')        
+    def _get_background(self):
+	if self.background_image_binary:
+            self.background_image_binary = self.background_image_elaborate.datas
+
+    background_image_elaborate = fields.Many2one(
+        string='Background image',
+	comodel_name='ir.attachment'
+    )
+
+    background_image_binary = fields.Binary(
+	"background_image",
+	store=False,	
+        inverse=_make_background,
+        compute=_get_background
+    )
+	
+
     display_type = fields.Selection(
         selection=lambda self: self.blog_id._get_display_types(),
         string='Display type',
