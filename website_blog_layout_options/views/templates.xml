@@ -7,7 +7,7 @@
 	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets" >
     	<xpath expr="/t" position="inside">
 	        <link rel='stylesheet' href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
-            <!--        	<script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/>-->
+                    	<script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/>
     	</xpath>
 	</template>
  
@@ -71,7 +71,6 @@
                 <attribute name="class" />
                 
                 <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight'}}"  </attribute>
-                <attribute name="style"/>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly 
