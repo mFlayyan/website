@@ -4,10 +4,10 @@
 
         
         
-	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options assets" >
+	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets" >
     	<xpath expr="/t" position="inside">
 	        <link rel='stylesheet' href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
-        	<script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/>
+            <!--        	<script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/>-->
     	</xpath>
 	</template>
  
@@ -58,8 +58,6 @@
         <template id="show_post_complete_layout_options" 
             inherit_id="website_blog.blog_post_complete">
             <xpath expr="//div[@id='blog_content']" position="before">
-
-                <h4 t-field="blog_post.background_image_show" />
                 <t t-if="blog_post.thumbnail">
                     <div  class="pull-left"    
                         style = "margin: 0px 6px 0px 18px;"   
@@ -72,13 +70,14 @@
             <xpath expr="//div[@id='title']" position="attributes">
                 <attribute name="class" />
                 
-                <attribute name="t-attf-class">cover js_fullheight {{'js_smallheight' if blog_post.background_image_show == 'small_image' else ''}}"  </attribute>
+                <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight'}}"  </attribute>
+                <attribute name="style"/>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly 
                  pointing XPath to leave footer the same -->
             <xpath expr="//div[@id='title']/div[@class='blog_title']" position="replace" >
-                <div class='blog_title'>
+                <div class='blog_title_small'>
                     <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id"/> 
                     <p class="post-meta text-muted text-center" name="blog_post_data"/>
                 </div>
