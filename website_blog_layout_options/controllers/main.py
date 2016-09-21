@@ -19,8 +19,6 @@ class WebsiteBlog(WebsiteBlog):
         result = super(WebsiteBlog, self).blog(
             blog=blog, tag=None, page=1, opt=opt
         )
-        import pudb
-        pudb.set_trace()
         cr, uid, context = request.cr, request.uid, request.context
         blog_cat_object = request.env['blog.category']
         allcat_ids = blog_cat_object.search([])
