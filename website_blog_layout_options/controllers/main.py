@@ -69,8 +69,8 @@ class WebsiteBlog(WebsiteBlog):
         blog_cat_object = request.env['blog.category']
         # categories are not per-blog
         cr, uid, context = request.cr, request.uid, request.context
-        allcat_ids = blog_cat_object.search(cr, uid, [], context=context)
+        allcat_ids = blog_cat_object.search([])
         result.qcontext['categories'] = blog_cat_object.browse(
-            cr, uid, allcat_ids, context=context)
+            allcat_ids)
         result.qcontext['current_category'] = False
         return result
