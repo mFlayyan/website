@@ -98,8 +98,10 @@ class BlogPost(models.Model):
     
     def _make_background(self):
 	self.background_image = self.background_image_binary
+        from datetime import datetime 
+        mydate = str(datetime.now())
         attachment_dict = {
-                'name': self.name + 'background',
+                'name': self.name + 'background_' + mydate,
                 'datas': self.background_image_binary,
                 'type': 'binary',
                 'res_model': 'ir.ui.view',
@@ -123,7 +125,7 @@ class BlogPost(models.Model):
 
     background_image_binary = fields.Binary(
 	"background_image",
-	store= False,
+	store= True,
         inverse=_make_background,
         compute=_get_background
     )

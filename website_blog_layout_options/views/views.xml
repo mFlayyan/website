@@ -38,7 +38,7 @@
 
                 <field name="name" position="before">
                     <field name="background_image_show"/>
-                        <field name="background_image" widget='image' class="oe_preview_bk"/>
+                        <field name="background_image_binary" widget='image' class="oe_preview_bk"/>
                 </field>
 
                 
