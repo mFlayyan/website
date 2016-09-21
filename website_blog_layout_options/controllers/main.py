@@ -13,15 +13,14 @@ class WebsiteBlog(WebsiteBlog):
     
     @http.route([
         '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>',
-        '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>'
-        '/page/<int:page>',
-        '/cat/<model("blog.category"):cat>',
-        '/cat/<model("blog.category"):cat>/page/<int:page>',
+        '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>/page/<int:page>',
         ], type='http', auth="public", website=True)
     def blogcat(self, blog=None, cat=None, page=1, **opt):
         result = super(WebsiteBlog, self).blog(
             blog=blog, tag=None, page=1, opt=opt
         )
+        import pudb
+        pudb.set_trace()
         cr, uid, context = request.cr, request.uid, request.context
         blog_cat_object = request.env['blog.category']
         allcat_ids = blog_cat_object.search([])
@@ -35,7 +34,7 @@ class WebsiteBlog(WebsiteBlog):
                         ("create_date", ">=", date_begin),
                         ("create_date", "<=", date_end)]
             blog_url = QueryURL(
-                    '', ['blog', 'cat', 'tag'], blog=None, tag=None,
+                    '', ['blog', 'cat', 'tag'], blog=blog, tag=None,
                     cat=cat, date_begin=date_begin, date_end=date_end
                 )
             domain += [('category_id', '=', cat.id)]

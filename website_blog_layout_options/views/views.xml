@@ -42,13 +42,12 @@
                 </field>
 
                 
-                <sheet position="inside">
-                    <h2>Content</h2>
+                <field name="visits" position="after">
                     <field name="content" widget="html"/>
-                </sheet>
+                </field>
 
                 <field name="content" position="after">
-                    <field name="category_id"  widget="many2many_tags"/>
+                    <field name="category_id"/>
                 </field>
 
             </field>
@@ -59,7 +58,7 @@
             <field name="name">blog_cat_tree</field>
             <field name="model">blog.category</field>
             <field name="arch" type="xml">
-                <tree string="Category List" create="false">
+                <tree string="Category List" create="true">
                     <field name="name"/>
                     <field name="post_ids"/>
                 </tree>

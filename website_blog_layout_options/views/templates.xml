@@ -109,7 +109,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         <t t-foreach="categories" t-as="nav_cat">
                             <li t-attf-style="display: list-item;">
-                                <a t-attf-href="#{blog_url('',['tag', 'cat'], tag=None, cat=nav_cat.id)}">
+                                <a t-attf-href="#{blog_url('',['blog', 'tag', 'cat'], blog=blog, tag=None, cat=nav_cat.id)}">
                                     <b><span t-field="nav_cat.name"/></b>
                                      <span class="pull-right badge" t-esc="len(nav_cat.post_ids)" /> posts 
                                 </a>
