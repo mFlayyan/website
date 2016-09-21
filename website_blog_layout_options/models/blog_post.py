@@ -123,7 +123,7 @@ class BlogPost(models.Model):
 
     background_image_binary = fields.Binary(
 	"background_image",
-	store=False,	
+	store= False,
         inverse=_make_background,
         compute=_get_background
     )

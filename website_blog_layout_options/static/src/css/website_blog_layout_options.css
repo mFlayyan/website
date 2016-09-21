@@ -34,3 +34,15 @@ div.thumbnail
 }
 
 
+.oe_preview_bk > img {
+  max-height:200px;
+  max-width: 400px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  border: none;
+  margin-bottom: 10px;
+}
