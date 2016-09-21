@@ -97,26 +97,28 @@ class BlogPost(models.Model):
 
     
     def _make_background(self):
-	self.background_image = self.background_image_binary
-        from datetime import datetime 
-        mydate = str(datetime.now())
-        attachment_dict = {
-                'name': self.name + 'background_' + mydate,
-                'datas': self.background_image_binary,
-                'type': 'binary',
-                'res_model': 'ir.ui.view',
-                }
-        new_attachment = self.env['ir.attachment'].sudo().create(
-            attachment_dict
-        )
-        self.background_image_elaborate = new_attachment.id
-	image ='/website/image/ir.attachment/%s/datas'% self.background_image_elaborate.id
-	self.write({'background_image': image})
+        for post in self:
+            post.background_image = post.background_image_binary
+            from datetime import datetime 
+            mydate = str(datetime.now())
+            attachment_dict = {
+                    'name': post.name + 'background_' + mydate,
+                    'datas': post.background_image_binary,
+                    'type': 'binary',
+                    'res_model': 'ir.ui.view',
+                    }
+            new_attachment = self.env['ir.attachment'].sudo().create(
+                attachment_dict
+            )
+            post.background_image_elaborate = new_attachment.id
+            image ='/website/image/ir.attachment/%s/datas'% self.background_image_elaborate.id
+            post.write({'background_image': image})
     	
     @api.depends('background_image_binary')        
     def _get_background(self):
-	if self.background_image_binary:
-            self.background_image_binary = self.background_image_elaborate.datas
+        for post in self: 
+            if post.background_image_binary:
+                post.background_image_binary = post.background_image_elaborate.datas
 
     background_image_elaborate = fields.Many2one(
         string='Background image',
