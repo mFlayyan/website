@@ -36,7 +36,7 @@ class WebsiteBlog(WebsiteBlog):
                     cat=cat, date_begin=date_begin, date_end=date_end
                 )
             domain += [('category_id', '=', cat.id)]
-            blog_post_obj = request.registry['blog.post']
+            blog_post_obj = request.env['blog.post']
             blog_post_ids = blog_post_obj.search(
                     cr, uid, domain,
                     order="create_date desc",
@@ -66,7 +66,7 @@ class WebsiteBlog(WebsiteBlog):
     def blog(self, blog=None, tag=None, page=1, **opt):
         result = super(WebsiteBlog, self).blog(
                 blog=blog, tag=tag, page=1, opt=opt)
-        blog_cat_object = request.registry['blog.category']
+        blog_cat_object = request.env['blog.category']
         # categories are not per-blog
         cr, uid, context = request.cr, request.uid, request.context
         allcat_ids = blog_cat_object.search(cr, uid, [], context=context)

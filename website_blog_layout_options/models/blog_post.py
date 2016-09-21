@@ -21,7 +21,7 @@ class BlogPost(models.Model):
         if self.display_type != "teaser":
             return
         # no empty teasers
-        if (self.teaser) and (not self.extract_auto):
+        if self.teaser and not self.extract_auto:
             self.teaser = tools.html_email_clean(self.teaser_input)
         else:
             res = ""
