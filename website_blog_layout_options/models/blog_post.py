@@ -64,7 +64,7 @@ class BlogPost(models.Model):
                 'name': self.name + 'thumbnail',
                 'datas': self.thumbnail_binary,
                 'type': 'binary',
-                'res_model': 'ir.ui.view',
+                'res_model': 'blog.post',
                 }
         new_attachment = self.env['ir.attachment'].sudo().create(
             attachment_dict
@@ -105,7 +105,7 @@ class BlogPost(models.Model):
                     'name': post.name + 'background_' + mydate,
                     'datas': post.background_image_binary,
                     'type': 'binary',
-                    'res_model': 'ir.ui.view',
+                    'res_model': 'blog.post',
                     }
             new_attachment = self.env['ir.attachment'].sudo().create(
                 attachment_dict
