@@ -33,12 +33,13 @@
                     <p/>
                     <group name="teaser" attrs="{'invisible': [('display_type', '!=', 'teaser')]}" colspan="4">
                         <field name="teaser"/>
-                        <button 
-                            type="object" 
-                            name="_extract_teaser"  
-                            string="Generate a teaser from content" 
-                            class="oe_link"/>
                     </group>
+                    <p/>
+                    <button 
+                       type="object" 
+                       name="extract_teaser"  
+                       string="Generate a teaser from content" 
+                       class="oe_link"/>
                 </field>
 
                 <field name="name" position="before">

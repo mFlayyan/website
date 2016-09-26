@@ -10,44 +10,34 @@ class BlogPost(models.Model):
 
     _inherit = 'blog.post'
 
-    """
-    extract teaser may be used manually in future.
-    it as a computed field.
-    TODO: add a button "extract teaser" to manually set it
-    """
-
-    @api.one
-    def _extract_teaser(self):
-        if self.display_type != "teaser":
-            return
-        # no empty teasers
-        if self.teaser and not self.extract_auto:
-            self.teaser = tools.html_email_clean(self.teaser_input)
-        else:
-            res = ""
-            # limit length to roughly 3-4 lines.
-            teaser_length = 500
-            parser = etree.HTMLParser()
-            if self.content:
-                tree = etree.fromstring(self.content, parser)
-                paragraphs = tree.xpath('//p')
-                # get the first non empty paragraph
-                for paragraph in paragraphs:
-                    if paragraph.text and len(res) < teaser_length:
-                        res = res + paragraph.text + '\n'
-                    else:
-                        break
-                # trim it to the intended length
-                self.teaser = tools.html_email_clean(
-                    res[:teaser_length] + " ...")
-                self.teaser_input = tools.html_email_clean(
-                    res[:teaser_length] + " ...")
+    @api.multi
+    def extract_teaser(self):
+        for this in self:
+            if this.display_type != "teaser":
+                return
             else:
-                # has no teaser or content,  just revert.
-                # frontend controls needed not to have a bad workflow.
-                # content cannot be inserted in backend by default.
-                # add content to backend in view
-                self.display_type = "no_teaser"
+                res = ""
+                # limit length to roughly 3-4 lines.
+                teaser_length = 500
+                parser = etree.HTMLParser()
+                if this.content:
+                    tree = etree.fromstring(this.content, parser)
+                    paragraphs = tree.xpath('//p')
+                    # get the first non empty paragraph
+                    for paragraph in paragraphs:
+                        if paragraph.text and len(res) < teaser_length:
+                            res = res + paragraph.text + '\n'
+                        else:
+                            break
+                    # trim it to the intended length
+                    this.teaser = tools.html_email_clean(
+                        res[:teaser_length] + " ...")
+                else:
+                    # has no teaser or content,  just revert.
+                    # frontend controls needed not to have a bad workflow.
+                    # content cannot be inserted in backend by default.
+                    # add content to backend in view
+                    this.display_type = "no_teaser"
 
     @api.onchange('blog_id')
     def set_new_default(self):
