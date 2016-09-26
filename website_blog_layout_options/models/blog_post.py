@@ -17,11 +17,11 @@ class BlogPost(models.Model):
     """
 
     @api.one
-    def _extract_teaser(self):
+    def extract_teaser(self):
         if self.display_type != "teaser":
             return
         # no empty teasers
-        if self.teaser and not self.extract_auto:
+        if self.teaser:
             self.teaser = tools.html_email_clean(self.teaser_input)
         else:
             res = ""
