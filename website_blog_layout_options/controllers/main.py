@@ -33,7 +33,7 @@ class WebsiteBlog(WebsiteBlog):
                         ("create_date", "<=", date_end)]
             blog_url = QueryURL(
                     '', ['blog', 'cat', 'tag'], blog=blog, tag=None,
-                    cat=cat, date_begin=date_begin, date_end=date_end
+                    cat=cat.id, date_begin=date_begin, date_end=date_end
                 )
             domain += [('category_id', '=', cat.id)]
             blog_post_obj = request.env['blog.post']
@@ -58,7 +58,7 @@ class WebsiteBlog(WebsiteBlog):
             result.qcontext['blog'] = blog
             result.qcontext['blog_posts'] = blog_posts
             result.qcontext['pager'] = pager
-            result.qcontext['current_category'] = cat
+            result.qcontext['current_category'] = cat.id
         result.qcontext['categories'] = allcat_ids
         return result
 
