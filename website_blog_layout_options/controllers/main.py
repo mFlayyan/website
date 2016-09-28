@@ -37,14 +37,9 @@ class WebsiteBlog(WebsiteBlog):
                 )
             domain += [('category_id', '=', cat.id)]
             blog_post_obj = request.env['blog.post']
-            blog_post_ids = blog_post_obj.search(
-                    cr, uid, domain,
+            blog_posts = blog_post_obj.search(
+                    domain,
                     order="create_date desc",
-                    context=context
-                )
-            blog_posts = blog_post_obj.browse(
-                    cr, uid, blog_post_ids,
-                    context=context
                 )
             pager = request.website.pager(
                 url=blog_url(),
@@ -58,7 +53,7 @@ class WebsiteBlog(WebsiteBlog):
             result.qcontext['blog'] = blog
             result.qcontext['blog_posts'] = blog_posts
             result.qcontext['pager'] = pager
-            result.qcontext['current_category'] = cat.id
+            result.qcontext['current_category'] = cat
         result.qcontext['categories'] = allcat_ids
         return result
 
