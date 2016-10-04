@@ -32,8 +32,8 @@ class WebsiteBlog(WebsiteBlog):
                         ("create_date", ">=", date_begin),
                         ("create_date", "<=", date_end)]
             blog_url = QueryURL(
-                    '', ['blog', 'cat', 'tag'], blog=blog, tag=None,
-                    cat=cat.id, date_begin=date_begin, date_end=date_end
+                    '', ['blog', 'cat', 'tag'], blog=blog, cat=cat.id, tag=None,
+                    date_begin=date_begin, date_end=date_end
                 )
             domain += [('category_id', '=', cat.id)]
             blog_post_obj = request.env['blog.post']
