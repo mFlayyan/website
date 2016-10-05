@@ -60,7 +60,7 @@ class WebsiteBlog(WebsiteBlog):
     @http.route()
     def blog(self, blog=None, tag=None, page=1, **opt):
         result = super(WebsiteBlog, self).blog(
-                blog=blog, tag=tag, page=1, opt=opt)
+                blog=blog, tag=tag, page=page, opt=opt)
         blog_cat_object = request.env['blog.category']
         # categories are not per-blog
         cr, uid, context = request.cr, request.uid, request.context
