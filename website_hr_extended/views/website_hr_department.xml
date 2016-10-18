@@ -20,7 +20,7 @@
                                     <h3><strong t-field="employee.name"></strong></h3>
                                     <p>
                                         <t t-if="employee.bio_website">
-                                            <em> <div  t-field="employee.bio_website"/> </em>
+                                            <em> <span  t-esc="employee.bio_website"/> </em>
                                         </t>
                                     </p>
                                     <p>
