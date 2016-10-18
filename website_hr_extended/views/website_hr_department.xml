@@ -11,7 +11,6 @@
         <template id="employee_form_extended" inherit_id="website_hr.aboutus">
             <xpath expr="//div[@t-foreach='employee_ids']" position="replace">
                 <div t-foreach="employee_ids.sorted(key=lambda a: a.position)" t-as="employee" class="col-sm-6 col-lg-5 mt16 text-center colsize">            
-                    <t t-call="website.publish_management"><t t-set="object" t-value="employee"/></t>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="thumbnail" style="height:570px">
