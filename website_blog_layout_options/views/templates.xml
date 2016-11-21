@@ -48,7 +48,7 @@
                             </a>
                         </t> 
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span t-field="blog_post.author_id" style="display: inline-block;"/>
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <span t-field="blog_post.create_date" style="display: inline-block;" t-field-options='{"format": "MMMM yyyy"}'/>
                         <span class="fa fa-tags"/>
