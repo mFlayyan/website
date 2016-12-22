@@ -7,7 +7,7 @@
 	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets" >
     	<xpath expr="/t" position="inside">
 	        <link rel='stylesheet' href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
-            <!--         	<script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/> -->
+            <!-- <script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/> -->
     	</xpath>
 	</template>
  
@@ -17,10 +17,10 @@
                 <div class="row mb16">
                     <t t-if="blog_post.display_type == 'complete'"> 
                         <t t-if="not blog_post.thumbnail">
-                            <div class="pull-left" />
+                            <div class="pull-right" />
                         </t>
                         <t t-if="blog_post.thumbnail">
-                            <div  class="pull-left thumbnail"    
+                            <div  class="pull-right thumbnail"    
                                 style = "margin: 0px 6px 0px 0px;"   
                                 t-field="blog_post.thumbnail.datas" 
                                 t-field-options = '{"widget": "image", "class" : "o_image_floating o_margin_s pull left", "max_width" : 64 }'
@@ -30,14 +30,14 @@
                     </t>
                     <t t-if="blog_post.display_type == 'teaser'">
                         <t t-if="blog_post.thumbnail">
-                            <div  class="pull-left thumbnail"   
+                            <div  class="pull-right thumbnail"   
                                 style = "margin: 0px 6px 0px 18px;"   
                                 t-field="blog_post.thumbnail.datas" 
                                 t-field-options = '{"widget": "image",  "max_width" : 64 }'
                                 />
                         </t>
                         <t t-if="not blog_post.thumbnail">
-                            <div class="pull-left">
+                            <div class="pull-right">
                             </div>
                         </t>
                         <p t-esc="blog_post.teaser"/>
@@ -59,18 +59,22 @@
             inherit_id="website_blog.blog_post_complete">
             <xpath expr="//div[@id='blog_content']" position="before">
                 <t t-if="blog_post.thumbnail">
-                    <div  class="pull-left"    
+                    <div class="pull-right"    
                         style = "margin: 0px 6px 0px 18px;"   
                         t-field="blog_post.thumbnail.datas" 
-                        t-field-options = '{"widget": "image",  "max_width" : 192 }'
+                        t-field-options = '{"widget": "image",  "max_width" : 256 }'
                         />
                 </t>
             </xpath>
 
             <xpath expr="//div[@id='title']" position="attributes">
                 <attribute name="class" />
-                
                 <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight'}}"  </attribute>
+            </xpath>
+
+            <xpath expr="//div[contains(@class,'cover_footer')]"  position="attributes">
+                <attribute name="class" />
+                <attribute name="t-attf-class">cover cover_footer mb0 text-center {{'bottom_smallheight' if blog_post.background_image_show == 'small_image' else 'bottom_fullheight'}}"  </attribute>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly 
