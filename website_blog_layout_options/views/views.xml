@@ -15,10 +15,6 @@
                         <button ame="set_all_posts" string="Set all posts to the same display type" type="object"/>
                     </group>
                 </field>
-
-                <field name="name" position="before">
-                    <field name="background_image_show"/>
-                </field>
             </field>
         </record>
 
@@ -41,13 +37,6 @@
                        string="Generate a teaser from content" 
                        class="oe_link"/>
                 </field>
-
-                <field name="name" position="before">
-                    <field name="background_image_show"/>
-                    <field name="background_image_binary" widget='image' colspan="4" />
-                </field>
-
-                
                 <field name="visits" position="after">
                     <field name="content" widget="html"/>
                 </field>

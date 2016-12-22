@@ -7,7 +7,7 @@
 	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets" >
     	<xpath expr="/t" position="inside">
 	        <link rel='stylesheet' href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
-            <!-- <script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/> -->
+            <script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/> 
     	</xpath>
 	</template>
  
@@ -65,16 +65,44 @@
                         t-field-options = '{"widget": "image",  "max_width" : 256 }'
                         />
                 </t>
+
+                </div>
             </xpath>
 
-            <xpath expr="//div[@id='title']" position="attributes">
+            <xpath expr="//div[contains(@class, 'js_fullheight')" position="attributes">
                 <attribute name="class" />
                 <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight'}}"  </attribute>
             </xpath>
 
+
+            <xpath expr="//div[contains(@class,'js_smallheight')]/div[@class='container']/div[@class='container text-right mt16']" position="replace">
+
+                <div class="container text-right mt16">
+                    <div class="btn-group css_non_editable_mode_hidden">
+                        <a id="change_cover_small" class="btn btn-primary">
+                            Change Cover S
+                        </a>
+                        <a id="clear_cover_small" class="btn btn-danger">
+                            <span class="fa fa-times"/>
+                        </a>
+                    </div>
+                    <div class="cover-storage oe_hidden"></div>
+                    <t t-call="website.publish_management">
+                        <t t-set="object" t-value="blog_post"/>
+                        <t t-set="publish_edit" t-value="True"/>
+                        <li>
+                            <form class="duplicate hidden" action="/blogpost/duplicate">
+                                <input name="blog_post_id" t-att-value="blog_post.id"/>
+                            </form>
+                            <a href="#" class="duplicate" onclick="$(this).prev('form').submit()">Duplicate</a>
+                        </li>
+                    </t>
+                </div>
+
+            </xpath>
             <xpath expr="//div[contains(@class,'cover_footer')]"  position="attributes">
                 <attribute name="class" />
-                <attribute name="t-attf-class">cover cover_footer mb0 text-center {{'bottom_smallheight' if blog_post.background_image_show == 'small_image' else 'bottom_fullheight'}}"  </attribute>
+                <attribute name="t-attf-class">cover_footer mb0 text-center {{'bottom_smallheight' if blog_post.background_image_show == 'small_image' else 'bottom_fullheight'}}"  </attribute>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly 
@@ -85,7 +113,7 @@
                     <p class="post-meta text-muted text-center" name="blog_post_data"/>
                 </div>
             </xpath>
-             
+
         </template>
 
         <template id="blog_show_cat_title" 
@@ -115,7 +143,7 @@
                             <li t-attf-style="display: list-item;">
                                 <a t-attf-href="#{blog_url('',['blog', 'tag', 'cat'], blog=blog, tag=None, cat=nav_cat.id)}">
                                     <b><span t-field="nav_cat.name"/></b>
-                                     <span class="pull-right badge" t-esc="len(nav_cat.post_ids)" /> posts 
+                                    <span class="pull-right badge" t-esc="len(nav_cat.post_ids)" /> posts 
                                 </a>
                             </li>   
                         </t>
@@ -123,20 +151,20 @@
                 </section>
             </xpath>
         </template>
- 
-		<!-- Option:Right Column: bigger size -->
-		<template id="opt_blog_varsize" name="Tags"
+
+        <!-- Option:Right Column: bigger size -->
+        <template id="opt_blog_varsize" name="Tags"
             inherit_id="website_blog.index_right" active="False" customize_show="True">
             <t t-if="larger_right_column">
-        		<xpath expr="//div[@id='main_column']" position="attributes">
-			    	<attribute name="class">col-sm-7</attribute>
-		    	</xpath>
+                <xpath expr="//div[@id='main_column']" position="attributes">
+                    <attribute name="class">col-sm-7</attribute>
+                </xpath>
                 <xpath expr="//div[@id='blog_right_column']" position="attributes">
                     <attribute name="class">col-lg-4 col-lg-offset-1 col-sm-5</attribute>
                 </xpath>
             </t>
-	    </template>
- 
+        </template>
+
 
     </data>
 </openerp>

@@ -42,12 +42,12 @@ class BlogPost(models.Model):
     @api.onchange('blog_id')
     def set_new_default(self):
         self.background_image_show = self.blog_id.background_image_show
-    
+
     @api.depends('thumbnail')
     def _get_thumbnail(self):
         if self.thumbnail:
             self.thumbnail_binary = self.thumbnail.datas
-    
+
 
     def _write_thumbnail(self):
         attachment_dict = {
@@ -84,44 +84,6 @@ class BlogPost(models.Model):
         inverse=_write_thumbnail,
         help='A small image shown in teaser and content'
     )
-
-    
-    def _make_background(self):
-        for post in self:
-            post.background_image = post.background_image_binary
-            from datetime import datetime 
-            mydate = str(datetime.now())
-            attachment_dict = {
-                    'name': post.name + 'background_' + mydate,
-                    'datas': post.background_image_binary,
-                    'type': 'binary',
-                    'res_model': 'blog.post',
-                    }
-            new_attachment = self.env['ir.attachment'].sudo().create(
-                attachment_dict
-            )
-            post.background_image_elaborate = new_attachment.id
-            image ='/website/image/ir.attachment/%s/datas'% self.background_image_elaborate.id
-            post.write({'background_image': image})
-    	
-    @api.depends('background_image_binary')        
-    def _get_background(self):
-        for post in self: 
-            if post.background_image_binary:
-                post.background_image_binary = post.background_image_elaborate.datas
-
-    background_image_elaborate = fields.Many2one(
-        string='Background image',
-	comodel_name='ir.attachment'
-    )
-
-    background_image_binary = fields.Binary(
-	"background_image",
-	store= True,
-        inverse=_make_background,
-        compute=_get_background
-    )
-	
 
     display_type = fields.Selection(
         selection=lambda self: self.blog_id._get_display_types(),
