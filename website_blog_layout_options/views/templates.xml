@@ -73,7 +73,7 @@
             </xpath>
 
 
-            <xpath expr="//div[contains(@class,'js_fullheight')]/div[@class='container']/div[@class='container text-right mt16']" position="replace">
+            <xpath expr="//div[contains(@class,'js_fullheight')]/div[@class='container']/div[contains(@class, 'container')]" position="replace">
 
                 <div class="container text-right mt16">
                     <div class="btn-group css_non_editable_mode_hidden">
