@@ -67,7 +67,7 @@
                 </t>
             </xpath>
 
-            <xpath expr="//div[contains(@class, 'js_fullheight')" position="attributes">
+            <xpath expr="//div[contains(@class, 'js_fullheight')]" position="attributes">
                 <attribute name="class" />
                 <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight'}}"  </attribute>
             </xpath>
