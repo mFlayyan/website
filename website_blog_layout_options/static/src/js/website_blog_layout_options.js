@@ -15,6 +15,20 @@ $(document).ready(function() {
                 $('body').on('click','#change_cover_small',_.bind(this.change_bgs, self.rte.editor, smallHeight));
                 $('body').on('click', '#clear_cover_small',_.bind(this.clean_bgs, self.rte.editor, smallHeight));
             },
+            save : function() {
+                var self = this;
+                var _super = this._super;
+                if ($('.cover').length) {
+                    return openerp.jsonRpc("/blogpost/change_background", 'call', {
+                        'post_id' : $('#blog_post_name').attr('data-oe-id'),
+                        'image' : $('.cover').css('background-image').replace(/url\(|\)|"|'/g,''),
+                    }).then(function () {
+                        return _super.call(self);
+                    });
+                } else {
+                    return this._super();
+                }
+            },
             clean_bgs : function(smallHeight) {
                 debugger;
                 $('.js_smallheight').css({"background-image":'none', 'min-height': smallHeight});
