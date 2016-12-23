@@ -64,8 +64,7 @@ class BlogPost(models.Model):
     background_image_show = fields.Selection(
         string="Type of header image on blog post",
         selection=lambda self: self.blog_id._get_image_options(),
-        default=lambda self: self.blog_id.background_image_show,
-        required=True,
+        default=lambda self: self.blog_id.background_image_show or 'big_image',
         help="Choose if how you want to display the blog post: "
         "Just the title above the post, a small header image "
         "above the blog post title, or a big full screen image,"
