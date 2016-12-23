@@ -8,32 +8,22 @@ $(document).ready(function() {
         website.EditorBar.include({
             edit: function () {
                 var self = this;
-                debugger;
                 $('.popover').remove();
+                var smallHeight = 200;
+                debugger;
+                if ($('.cover')[0].attributes.class.textContent.indexOf('js_smallheight') !== -1) {
+                    $('body').on('click','#change_cover_small',_.bind(this.change_bg_s, self.rte.editor, smallHeight));
+                    $('body').on('click', '#clear_cover_small',_.bind(this.clean_bg_s, self.rte.editor, smallHeight));
+                }
+
                 this._super();
-                var smallHeight = $(window).height();
-                $('body').on('click','#change_cover_small',_.bind(this.change_bgs, self.rte.editor, smallHeight));
-                $('body').on('click', '#clear_cover_small',_.bind(this.clean_bgs, self.rte.editor, smallHeight));
             },
-            save : function() {
+            clean_bg_s : function(smallHeight) {
                 var self = this;
                 var _super = this._super;
-                if ($('.cover').length) {
-                    return openerp.jsonRpc("/blogpost/change_background", 'call', {
-                        'post_id' : $('#blog_post_name').attr('data-oe-id'),
-                        'image' : $('.cover').css('background-image').replace(/url\(|\)|"|'/g,''),
-                    }).then(function () {
-                        return _super.call(self);
-                    });
-                } else {
-                    return this._super();
-                }
-            },
-            clean_bgs : function(smallHeight) {
-                debugger;
                 $('.js_smallheight').css({"background-image":'none', 'min-height': smallHeight});
             },
-            change_bgs : function(smallHeight) {
+            change_bg_s : function(smallHeight) {
                 debugger;
                 var self  = this;
                 var element = new CKEDITOR.dom.element(self.element.find('.cover-storage').$[0]);
@@ -46,6 +36,5 @@ $(document).ready(function() {
                 editor.appendTo('body');
             },
         });
-        $('.js_smallheight').css('min-height', 200);
     }
 });

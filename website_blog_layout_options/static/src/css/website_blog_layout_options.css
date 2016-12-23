@@ -1,20 +1,5 @@
 /* best way to  contain an image cross browser approved */
 
-div.js_smallheight
-{
-    max-height:200px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-div.bottom_smallheight
-{
-    max-height:300px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
 
 div.blog_title_small
 {

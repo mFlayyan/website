@@ -7,7 +7,8 @@
 	<template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets" >
     	<xpath expr="/t" position="inside">
 	        <link rel='stylesheet' href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
-            <script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/> 
+
+            <!-- <script type="text/javascript" src="/website_blog_layout_options/static/src/js/website_blog_layout_options.js"/>  -->
     	</xpath>
 	</template>
  
@@ -69,34 +70,61 @@
 
             <xpath expr="//div[contains(@class, 'js_fullheight')]" position="attributes">
                 <attribute name="class" />
-                <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight'}}"  </attribute>
+                <attribute name="t-attf-class">cover {{'js_smallheight' if blog_post.background_image_show == 'small_image' else 'js_fullheight' }}"  </attribute>
             </xpath>
 
 
-            <xpath expr="//div[contains(@class,'js_fullheight')]/div[@class='container']/div[contains(@class, 'container')]" position="replace">
-
-                <div class="container text-right mt16">
-                    <div class="btn-group css_non_editable_mode_hidden">
-                        <a id="change_cover_small" class="btn btn-primary">
-                            Change Cover S
-                        </a>
-                        <a id="clear_cover_small" class="btn btn-danger">
-                            <span class="fa fa-times"/>
-                        </a>
+        <xpath expr="//div[contains(@t-attf-class,'cover')]/div[@class='container']" position="replace">
+            <t t-if="blog_post.background_image_show == 'small_image'">
+                <div class="container">
+                    <div class="container text-right mt16">
+                        <div class="btn-group css_non_editable_mode_hidden">
+                            <a id="change_cover_small" class="btn btn-primary">
+                                Change Cover S
+                            </a>
+                            <a id="clear_cover_small" class="btn btn-danger">
+                                <span class="fa fa-times"/>
+                            </a>
+                        </div>
+                        <div class="cover-storage oe_hidden"></div>
+                        <t t-call="website.publish_management">
+                            <t t-set="object" t-value="blog_post"/>
+                            <t t-set="publish_edit" t-value="True"/>
+                            <li>
+                                <form class="duplicate hidden" action="/blogpost/duplicate">
+                                    <input name="blog_post_id" t-att-value="blog_post.id"/>
+                                </form>
+                                <a href="#" class="duplicate" onclick="$(this).prev('form').submit()">Duplicate</a>
+                            </li>
+                        </t>
                     </div>
-                    <div class="cover-storage oe_hidden"></div>
-                    <t t-call="website.publish_management">
-                        <t t-set="object" t-value="blog_post"/>
-                        <t t-set="publish_edit" t-value="True"/>
-                        <li>
-                            <form class="duplicate hidden" action="/blogpost/duplicate">
-                                <input name="blog_post_id" t-att-value="blog_post.id"/>
-                            </form>
-                            <a href="#" class="duplicate" onclick="$(this).prev('form').submit()">Duplicate</a>
-                        </li>
-                    </t>
                 </div>
-
+            </t>
+            <t t-if="blog_post.background_image_show == 'big_image' or not blog_post.background_image_show">
+                <div class="container">
+                    <div class="container text-right mt16">
+                        <div class="btn-group css_non_editable_mode_hidden">
+                            <a id="change_cover" class="btn btn-primary">
+                                Change Cover 
+                            </a>
+                            <a id="clear_cover" class="btn btn-danger">
+                                <span class="fa fa-times"/>
+                            </a>
+                        </div>
+                        <div class="cover-storage oe_hidden"></div>
+                        <t t-call="website.publish_management">
+                            <t t-set="object" t-value="blog_post"/>
+                            <t t-set="publish_edit" t-value="True"/>
+                            <li>
+                                <form class="duplicate hidden" action="/blogpost/duplicate">
+                                    <input name="blog_post_id" t-att-value="blog_post.id"/>
+                                </form>
+                                <a href="#" class="duplicate" onclick="$(this).prev('form').submit()">Duplicate</a>
+                            </li>
+                        </t>
+                    </div>
+                </div>
+            </t>
             </xpath>
             <xpath expr="//div[contains(@class,'cover_footer')]"  position="attributes">
                 <attribute name="class" />
@@ -105,7 +133,7 @@
 
             <!-- reducing title elements for compact layout, explitly 
                  pointing XPath to leave footer the same -->
-            <xpath expr="//div[@id='title']/div[@class='blog_title']" position="replace" >
+            <xpath expr="//div[@class='blog_title']" position="replace" >
                 <div class='blog_title_small'>
                     <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id"/> 
                     <p class="post-meta text-muted text-center" name="blog_post_data"/>
@@ -129,7 +157,6 @@
 
         <template id="opt_blog_rc_categories" 
             name="Blog category list"
-            inherit_id="website_blog.index_right" 
             active="False" 
             customize_show="True">
             <!-- give the element Id in order to identify it in the next xpath in a future-proof way -->
