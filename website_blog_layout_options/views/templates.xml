@@ -45,8 +45,14 @@
                             </t>
                         </div>
                         <div class="col-md-9">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <span t-field="blog_post.author_id" style="display: inline-block;"/>
-                            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> <span t-field="blog_post.create_date" style="display: inline-block;" t-field-options='{"format": "MMMM yyyy"}'/>
+                            <span class="glyphicon glyphicon-user" 
+                                  aria-hidden="true"></span> 
+                            <span t-field="blog_post.author_id" style="display: inline-block;"/>
+                            <span class="glyphicon glyphicon-calendar" 
+                                aria-hidden="true"></span> 
+                            <span t-field="blog_post.create_date" 
+                                style="display: inline-block;" 
+                                t-field-options='{"format": "MMMM yyyy"}'/>
                             <span class="fa fa-tags"/>
                             <t t-foreach="blog_post.tag_ids" t-as="one_tag">
                                 <a t-attf-href="#{blog_url(tag=one_tag)}" t-esc="one_tag.name"/> &amp;nbsp;
@@ -55,9 +61,7 @@
                     </div>
                 </div>
             </xpath>
-            <xpath expr="//h2[@t-field='blog_post.name']" position="after">
-
-            </xpath>
+            <!-- ALLWAYS REMOVE SUBTITLES -->
             <xpath expr="//h4[@t-field='blog_post.subtitle']" position="replace">
                 <span></span>
             </xpath>
@@ -81,7 +85,7 @@
                 <t t-if="blog_post.background_image_show == 'small_image'">
                     <div class="js_smallheight"/>
                 </t>
-                <t t-if="blog_post.background_image_show == 'big_image' or not blog_post.background_image_show"> 
+                <t t-if="blog_post.background_image_show == 'big_image' or not blog_post.background_image_show">
                     <div/>
                 </t>
             </xpath>
