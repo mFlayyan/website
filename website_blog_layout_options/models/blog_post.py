@@ -48,7 +48,6 @@ class BlogPost(models.Model):
         if self.thumbnail:
             self.thumbnail_binary = self.thumbnail.datas
 
-
     def _write_thumbnail(self):
         attachment_dict = {
                 'name': self.name + 'thumbnail',
@@ -94,7 +93,6 @@ class BlogPost(models.Model):
              "title+first lines of post select Complete if you prefer,"
              "the entire text  to be viewed in the blog list.")
 
-    #remove automatic extraction
     teaser = fields.Text(string='Teaser for Blog Post')
 
     category_id = fields.Many2many(

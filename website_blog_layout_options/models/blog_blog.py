@@ -23,15 +23,13 @@ class WebsiteBlog(models.Model):
         string="Display Type",
         selection="_get_display_types",
         required=True,
-        default='no_teaser')
-    
-
+        default='no_teaser'
+    )
     larger_right_column = fields.Boolean(
         string="Larger Right Column Layout",
         default='True',
         help="blog right column when activated will we slightly larger"
     )
-
     thumbnail_width = fields.Selection(selection=[
         ('64', 'Small'),  ('128', 'Medium'),
         ('192', 'Big')],
@@ -39,7 +37,6 @@ class WebsiteBlog(models.Model):
         help="Allows to choose thumbnail size in blog teaser and also"
              "in content \n will be used in all blogposts of this blog",
         default='128')
-
     background_image_show = fields.Selection(
         selection="_get_image_options",
         string="Default blog-wide setting for background image",

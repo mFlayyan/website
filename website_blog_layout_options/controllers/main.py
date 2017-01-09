@@ -10,16 +10,15 @@ class WebsiteBlog(WebsiteBlog):
 
     # note route must allways be the most external
 
-    
     @http.route([
         '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>',
-        '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>/page/<int:page>',
+        '/blog/<model("blog.blog"):blog>/cat/<model("blog.category"):cat>'
+        '/page/<int:page>',
         ], type='http', auth="public", website=True)
     def blogcat(self, blog=None, cat=None, page=1, **opt):
         result = super(WebsiteBlog, self).blog(
             blog=blog, tag=None, page=1, opt=opt
         )
-        cr, uid, context = request.cr, request.uid, request.context
         blog_cat_object = request.env['blog.category']
         allcat_ids = blog_cat_object.search([])
         domain = []
@@ -32,9 +31,9 @@ class WebsiteBlog(WebsiteBlog):
                         ("create_date", ">=", date_begin),
                         ("create_date", "<=", date_end)]
             blog_url = QueryURL(
-                    '', ['blog', 'cat', 'tag'], blog=blog, cat=cat.id, tag=None,
-                    date_begin=date_begin, date_end=date_end
-                )
+                '', ['blog', 'cat', 'tag'], blog=blog, cat=cat.id,
+                tag=None, date_begin=date_begin, date_end=date_end
+            )
             domain += [('category_id', '=', cat.id)]
             blog_post_obj = request.env['blog.post']
             blog_posts = blog_post_obj.search(
@@ -63,7 +62,6 @@ class WebsiteBlog(WebsiteBlog):
                 blog=blog, tag=tag, page=page, opt=opt)
         blog_cat_object = request.env['blog.category']
         # categories are not per-blog
-        cr, uid, context = request.cr, request.uid, request.context
         allcat_ids = blog_cat_object.search([])
         result.qcontext['categories'] = allcat_ids
         result.qcontext['current_category'] = False
