@@ -102,7 +102,7 @@
         
             <xpath expr="//div[@id='title']" position="after" >
                 <div class='blog_title_small'>
-                    <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id"/>
+                    <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id" style="color:black;"/>
                     <p class="post-meta text-muted text-center" name="blog_post_data"/>
                 </div>
             </xpath>
