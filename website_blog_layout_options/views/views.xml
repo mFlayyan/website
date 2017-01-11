@@ -7,7 +7,6 @@
             <field name="arch" type="xml">
                 <field name="description" position="after">
                    <group>
-                    <field name="larger_right_column"/>
                     <field name="thumbnail_width"/>
                      <field name="display_type"/>
                     <field name="background_image_show" />

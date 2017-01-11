@@ -140,19 +140,6 @@
             </xpath>
         </template>
 
-        <!-- Option:Right Column: bigger size -->
-        <template id="opt_blog_varsize" name="Tags"
-            inherit_id="website_blog.index_right" active="False" customize_show="True">
-            <t t-if="larger_right_column">
-                <xpath expr="//div[@id='main_column']" position="attributes">
-                    <attribute name="class">col-sm-7</attribute>
-                </xpath>
-                <xpath expr="//div[@id='blog_right_column']" position="attributes">
-                    <attribute name="class">col-lg-4 col-lg-offset-1 col-sm-5</attribute>
-                </xpath>
-            </t>
-        </template>
-
 
     </data>
 </openerp>

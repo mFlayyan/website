@@ -25,11 +25,6 @@ class WebsiteBlog(models.Model):
         required=True,
         default='no_teaser'
     )
-    larger_right_column = fields.Boolean(
-        string="Larger Right Column Layout",
-        default='True',
-        help="blog right column when activated will we slightly larger"
-    )
     thumbnail_width = fields.Selection(selection=[
         ('64', 'Small'),  ('128', 'Medium'),
         ('192', 'Big')],
