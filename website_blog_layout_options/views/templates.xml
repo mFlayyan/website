@@ -95,7 +95,6 @@
 
             <!-- reducing title elements for compact layout, explitly
                  pointing XPath to leave footer the same -->
-            <! -- TODO This is a candidate for the new Move Xpath in  base_view_inheritance_extension -->
             <xpath expr="//div[@class='blog_title']" position="replace" >
                 <div class="blog_title"> </div>
             </xpath>
