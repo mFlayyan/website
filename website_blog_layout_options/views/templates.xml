@@ -121,6 +121,7 @@
         <template id="opt_blog_rc_categories"
             name="Blog category list"
             active="False"
+            inherit_id = "website_blog.index_right"
             customize_show="True">
             <!-- give the element Id in order to identify it in the next xpath in a future-proof way -->
             <xpath expr="//div[@id='blog_right_column']" position="inside">
