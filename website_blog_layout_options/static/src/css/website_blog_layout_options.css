@@ -9,8 +9,9 @@ div.blog_title_small
 
 div.blog_title_small h1
 {
-    font-size:32px;
+    font-size:40px;
     font-weight:bold;
+    color:black;
     text-align:center;
 }   
 
@@ -23,7 +24,6 @@ div.blog_title_small p
 div.thumbnail
 {
     margin: 5px 12px 5px 5px;
-    float: right;
 }
 
 
