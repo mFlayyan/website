@@ -90,16 +90,24 @@
                 </t>
             </xpath>
             <xpath expr="//div[contains(@class,'cover_footer')]"  position="attributes">
-                <attribute name="class" />
-                <attribute name="t-attf-class">cover_footer mb0 text-center {{'bottom_smallheight' if blog_post.background_image_show == 'small_image' else 'bottom_fullheight'}}"  </attribute>
+                <attribute name="t-attf-style">min-height:300px;</attribute>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly
                  pointing XPath to leave footer the same -->
+            <! -- TODO This is a candidate for the new Move Xpath in  base_view_inheritance_extension -->
             <xpath expr="//div[@class='blog_title']" position="replace" >
+                <div class="blog_title"> </div>
+            </xpath>
+
+        
+            <xpath expr="//div[@id='title']" position="after" >
                 <div class='blog_title_small'>
                     <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id"/>
                     <p class="post-meta text-muted text-center" name="blog_post_data"/>
+                </div>
+                <div t-if="blog_post_cover_properties.get('resize_class') == 'cover cover_full'" id="blog_angle_down">
+                    <strong><a href="#blog_content" class="fa fa-angle-down fa-3x fa-inverse mt4"/></strong>
                 </div>
             </xpath>
 
