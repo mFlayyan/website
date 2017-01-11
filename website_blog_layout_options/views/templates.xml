@@ -90,7 +90,7 @@
                 </t>
             </xpath>
             <xpath expr="//div[contains(@class,'cover_footer')]"  position="attributes">
-                <attribute name="t-attf-style">min-height:300px;</attribute>
+                <attribute name="t-attf-style">min-height:250px;</attribute>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly

@@ -10,7 +10,8 @@ class WebsiteBlog(models.Model):
 
     @api.model
     def _get_image_options(self):
-        return [('small_image', 'Show small header image'),
+        return [('small_image', 
+                 'Show small header image (limited to 400px in height)'),
                 ('big_image', 'Show big header image (odoo default)')]
 
     @api.model

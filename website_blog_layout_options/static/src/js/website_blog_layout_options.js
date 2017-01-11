@@ -8,7 +8,7 @@ $(document).ready(function() {
             clean_bg : function(vHeight) {
                 if (jQuery('.cover').length && jQuery('.js_smallheight').length)
                 {
-                  var vheight = 450;
+                  var vheight = 400;
                   jQuery('.cover').css({"background-image":'none', 'min-height': vHeight});
                 }
                 this._super().apply(this, arguments);
@@ -20,13 +20,13 @@ $(document).ready(function() {
                 {
                     $(document.body).on('media-saved', self, function () {
                         var url = $('.cover-storage').attr('src');
-                        $('.js_fullheight').css({"background-image": !_.isUndefined(url) ? 'url(' + url + ')' : "", 'min-height': 450);
+                        $('.js_fullheight').css({"background-image": !_.isUndefined(url) ? 'url(' + url + ')' : "", 'min-height': 400);
                     });
                 }
             },
         });
                 
         if ($('.cover').length && jQuery('.js_smallheight').length)
-            {jQuery('.js_fullheight').css('min-height', 450);}
+            {jQuery('.js_fullheight').css('min-height', 400);}
     }
 });
