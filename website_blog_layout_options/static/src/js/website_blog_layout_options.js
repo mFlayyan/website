@@ -20,7 +20,7 @@ $(document).ready(function() {
                 {
                     $(document.body).on('media-saved', self, function () {
                         var url = $('.cover-storage').attr('src');
-                        $('.js_fullheight').css({"background-image": !_.isUndefined(url) ? 'url(' + url + ')' : "", 'min-height': 400);
+                        $('.js_fullheight').css({"background-image": !_.isUndefined(url) ? 'url(' + url + ')' : "", 'min-height': 400});
                     });
                 }
             },
