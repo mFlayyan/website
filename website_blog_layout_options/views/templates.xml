@@ -105,9 +105,6 @@
                     <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id"/>
                     <p class="post-meta text-muted text-center" name="blog_post_data"/>
                 </div>
-                <div t-if="blog_post_cover_properties.get('resize_class') == 'cover cover_full'" id="blog_angle_down">
-                    <strong><a href="#blog_content" class="fa fa-angle-down fa-3x fa-inverse mt4"/></strong>
-                </div>
             </xpath>
 
         </template>
