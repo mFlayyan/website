@@ -45,13 +45,13 @@
                             </t>
                         </div>
                         <div class="col-md-9">
-                            <span class="glyphicon glyphicon-user" 
-                                  aria-hidden="true"></span> 
+                            <span class="glyphicon glyphicon-user"
+                                aria-hidden="true"></span>
                             <span t-field="blog_post.author_id" style="display: inline-block;"/>
-                            <span class="glyphicon glyphicon-calendar" 
-                                aria-hidden="true"></span> 
-                            <span t-field="blog_post.create_date" 
-                                style="display: inline-block;" 
+                            <span class="glyphicon glyphicon-calendar"
+                                aria-hidden="true"></span>
+                            <span t-field="blog_post.create_date"
+                                style="display: inline-block;"
                                 t-field-options='{"format": "MMMM yyyy"}'/>
                             <span class="fa fa-tags"/>
                             <t t-foreach="blog_post.tag_ids" t-as="one_tag">
@@ -89,17 +89,58 @@
                     <div/>
                 </t>
             </xpath>
+
+
+            <!--only footer-->
             <xpath expr="//div[contains(@class,'cover_footer')]"  position="attributes">
-                <attribute name="t-attf-style">min-height:250px;</attribute>
+                <attribute name="t-attf-style">background-image: url(#{next_post.background_image});min-height:275px;max-height:275px;</attribute>
+            </xpath>
+
+            <!--remove subtitle from footer-->
+            <xpath
+                expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']/h2"
+                position="replace">
+                <h2/>
+            </xpath>
+
+            <!--make footer avatar bigger and set next to name -->
+            <xpath
+                expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']/div/span[@t-field='next_post.author_avatar']"
+                position="attributes">
+                <attribute name="t-field-options">
+                    {"widget": "image", "class": "img-circle", "style":"width: 70px; margin-right: 10px; display:inline-block"} </attribute>
+            </xpath>
+
+            <xpath
+                expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']/div/span[@t-field='next_post.author_id']"
+                position="attributes">
+                <attribute name="style">display:inline-block;font-size:24px;
+                </attribute>
+            </xpath>
+
+            <!--make readnext 24px TODO Candidate for
+                 base_view_inheritance_extension use-->
+            <xpath
+                expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']/p"
+                position="replace">
+                <p>
+                </p>
+            </xpath>
+
+            <xpath
+                expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']"
+                position="inside">
+                    <p class="mt32" style="font-size:24px;">
+                        Read Next <span class="fa fa-long-arrow-right"/></p>
             </xpath>
 
             <!-- reducing title elements for compact layout, explitly
                  pointing XPath to leave footer the same -->
-            <xpath expr="//div[@class='blog_title']" position="replace" >
+            <xpath expr="//div[@id='title']/div[@class='blog_title']" position="replace" >
                 <div class="blog_title"> </div>
             </xpath>
 
-        
+
             <xpath expr="//div[@id='title']" position="after" >
                 <div class='blog_title_small'>
                     <h1 t-field="blog_post.name" id="blog_post_name" t-att-data-blog-id="blog_post.id" style="color:black;"/>
