@@ -118,8 +118,7 @@
                 </attribute>
             </xpath>
 
-            <!--make readnext 24px TODO Candidate for
-                 base_view_inheritance_extension use-->
+            <!-- Just remove, read next -->
             <xpath
                 expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']/p"
                 position="replace">
@@ -127,12 +126,6 @@
                 </p>
             </xpath>
 
-            <xpath
-                expr="//div[contains(@class,'cover_footer')]/div[@class='blog_title']"
-                position="inside">
-                    <p class="mt32" style="font-size:24px;">
-                        Read Next <span class="fa fa-long-arrow-right"/></p>
-            </xpath>
 
             <!-- reducing title elements for compact layout, explitly
                  pointing XPath to leave footer the same -->
