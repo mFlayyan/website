@@ -25,8 +25,5 @@ $(document).ready(function() {
                 }
             },
         });
-                
-        if ($('.cover').length && jQuery('.js_smallheight').length)
-            {jQuery('.js_fullheight').css('min-height', 450);}
     }
 });
