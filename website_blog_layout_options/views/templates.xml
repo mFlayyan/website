@@ -3,7 +3,18 @@
     <data>
         <!--important the stuff i include in the assets_editor will be
         available only to logged users with edit permissions-->    
-        <template id="blog_layout_assets_editor2" inherit_id="website.assets_editor" name="website_blog_layout_options_assets_editor2">
+
+
+V        <template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets">
+            <xpath expr="." position="inside">
+                <link rel='stylesheet'
+                    href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
+                <script type="text/javascript" 
+                    src="/website_blog_layout_options/static/src/js/website_blog_layout_options_frontend.js"/>
+            </xpath>
+        </template>
+
+        <template id="blog_layout_assets_editor" inherit_id="website.assets_editor" name="website_blog_layout_options_assets_editor">
             <xpath expr="." position="inside">
                 <script type="text/javascript" 
                     src="/website_blog_layout_options/static/src/js/website_blog_layout_options_editor.js"/>
@@ -11,7 +22,7 @@
 
         </template>
 
-        <template id="blog_layout_assets_frontend2" inherit_id="website.assets_frontend" name="layout_frontend2">
+V        <template id="assets_frontend" inherit_id="website.assets_frontend" name="website_blog_layout_options_assets">
             <xpath expr="." position="inside">
                 <link rel='stylesheet'
                     href='/website_blog_layout_options/static/src/css/website_blog_layout_options.css'/>
