@@ -12,7 +12,6 @@
         'website_blog'
     ],
     "data": [
-        'views/assets.xml',
         'views/templates.xml',
         'views/views.xml',
         'security/ir.model.access.csv',
