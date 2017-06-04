@@ -49,7 +49,9 @@
                                     </div>
                                 </t>
                                 <p t-esc="blog_post.teaser" />
-                                <a t-attf-href="/blog/#{ slug(blog_post.blog_id) }/post/#{ slug(blog_post)}">
+                                <a t-attf-href="/blog/#{ slug(blog_post.blog_id) }/post/#{ slug(blog_post)}"
+                                   class="btn btn-primary pull-right">
+                                  Read more
                                 </a>
                             </t>
                         </div>
