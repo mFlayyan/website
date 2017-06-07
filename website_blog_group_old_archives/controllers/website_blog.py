@@ -70,7 +70,7 @@ class website_blog(WebsiteBlog):
         self._date_begin, self._date_end = opt.get('date_begin'), opt.get('date_end')
         self._tag = tag
         result = super(website_blog, self).blog(
-                blog=blog, tag=tag, page=page, **opt)
+                blog=blog, tag=tag, page=page, **opt.get('opt'))
         result.qcontext['nav_list_old_grouped'] = self.nav_list_grouped()['old_groups']
         result.qcontext['nav_list_new_grouped'] = self.nav_list_grouped()['new_groups']
 	return result
